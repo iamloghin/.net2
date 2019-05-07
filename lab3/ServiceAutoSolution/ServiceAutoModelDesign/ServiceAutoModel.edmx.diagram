@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c7ceb3f9329f4ea1bfcf478077298cb3" Name="Diagram1" ZoomLevel="93" >
+        <EntityTypeShape EntityType="ServiceAutoModel.Client" PointX="5.25" PointY="13" Width="1.5" />
+        <EntityTypeShape EntityType="ServiceAutoModel.Car" PointX="7.5" PointY="13.25" Width="1.5" />
+        <AssociationConnector Association="ServiceAutoModel.ClientCar" />
+        <EntityTypeShape EntityType="ServiceAutoModel.Chassis" PointX="9.75" PointY="13.625" Width="1.5" />
+        <EntityTypeShape EntityType="ServiceAutoModel.Mechanic" PointX="5.25" PointY="9.125" Width="1.5" />
+        <EntityTypeShape EntityType="ServiceAutoModel.Material" PointX="3" PointY="3.125" Width="1.5" />
+        <EntityTypeShape EntityType="ServiceAutoModel.Image" PointX="3" PointY="6.5" Width="1.5" />
+        <EntityTypeShape EntityType="ServiceAutoModel.Operation" PointX="3" PointY="9.75" Width="1.5" />
+        <AssociationConnector Association="ServiceAutoModel.OperationMechanic" />
+        <EntityTypeShape EntityType="ServiceAutoModel.Order" PointX="3" PointY="12.875" Width="1.5" />
+        <AssociationConnector Association="ServiceAutoModel.OrderCar" />
+        <AssociationConnector Association="ServiceAutoModel.OrderClient" />
+        <EntityTypeShape EntityType="ServiceAutoModel.OrderDetail" PointX="0.75" PointY="8.5" Width="1.5" />
+        <AssociationConnector Association="ServiceAutoModel.OrderDetailOrder" />
+        <AssociationConnector Association="ServiceAutoModel.OrderDetailMechanic" />
+        <AssociationConnector Association="ServiceAutoModel.OrderDetailMaterial" />
+        <AssociationConnector Association="ServiceAutoModel.OrderDetailOperation" />
+        <AssociationConnector Association="ServiceAutoModel.OrderDetailImage" />
+        <AssociationConnector Association="ServiceAutoModel.CarChassis" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
