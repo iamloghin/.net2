@@ -15,7 +15,6 @@ namespace UnitTests
             {
                 new Post()
                 {
-                    PostId = new Guid(),
                     Date = DateTime.Now,
                     Description = "Postul numarul 1",
                     Domain = "UnitTest",
@@ -23,24 +22,20 @@ namespace UnitTests
                     {
                         new Comment()
                         {
-                            CommentId = new Guid(),
                             Text = "Comment_1"
                         },
                         new Comment()
                         {
-                            CommentId = new Guid(),
                             Text = "Comment_2"
                         },
                         new Comment()
                         {
-                            CommentId = new Guid(),
                             Text = "Comment_3"
                         }
                     }
                 },
                 new Post()
                 {
-                    PostId = new Guid(),
                     Date = DateTime.Now,
                     Description = "Postul numarul 2",
                     Domain = "UnitTest",
@@ -48,27 +43,22 @@ namespace UnitTests
                     {
                         new Comment()
                         {
-                            CommentId = new Guid(),
                             Text = "Comment_1"
                         },
                         new Comment()
                         {
-                            CommentId = new Guid(),
                             Text = "Comment_2"
                         },
                         new Comment()
                         {
-                            CommentId = new Guid(),
                             Text = "Comment_3"
                         },
                         new Comment()
                         {
-                            CommentId = new Guid(),
                             Text = "Comment_4"
                         },
                         new Comment()
                         {
-                            CommentId = new Guid(),
                             Text = "Comment_5"
                         }
                     }
