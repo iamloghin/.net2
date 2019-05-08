@@ -18,7 +18,7 @@ namespace PostComment
     {
         public Comment()
         {
-            CommentId = new Guid();
+            CommentId = Guid.NewGuid();
         }
 
         [DataMember]

@@ -17,54 +17,64 @@ namespace UnitTests
                 {
                     Date = DateTime.Now,
                     Description = "Postul numarul 1",
-                    Domain = "UnitTest",
-                    Comments = new List<Comment>()
-                    {
-                        new Comment()
-                        {
-                            Text = "Comment_1"
-                        },
-                        new Comment()
-                        {
-                            Text = "Comment_2"
-                        },
-                        new Comment()
-                        {
-                            Text = "Comment_3"
-                        }
-                    }
+                    Domain = "UnitTest"
                 },
                 new Post()
                 {
                     Date = DateTime.Now,
                     Description = "Postul numarul 2",
-                    Domain = "UnitTest",
-                    Comments = new List<Comment>()
-                    {
-                        new Comment()
-                        {
-                            Text = "Comment_1"
-                        },
-                        new Comment()
-                        {
-                            Text = "Comment_2"
-                        },
-                        new Comment()
-                        {
-                            Text = "Comment_3"
-                        },
-                        new Comment()
-                        {
-                            Text = "Comment_4"
-                        },
-                        new Comment()
-                        {
-                            Text = "Comment_5"
-                        }
-                    }
+                    Domain = "UnitTest"
                 }
             };
+
+            var commentsList = new List<Comment>()
+            {
+                new Comment()
+                {
+                    Post = postsList[0],
+                    PostPostId = postsList[0].PostId,
+                    Text = "Comment_1"
+                },
+                new Comment()
+                {
+                    Post = postsList[0],
+                    PostPostId = postsList[0].PostId,
+                    Text = "Comment_2"
+                },
+                new Comment()
+                {
+                    Post = postsList[0],
+                    PostPostId = postsList[0].PostId,
+                    Text = "Comment_3"
+                },
+                new Comment()
+                {
+                    Post = postsList[1],
+                    PostPostId = postsList[1].PostId,
+                    Text = "Comment_1"
+                },
+                new Comment()
+                {
+                    Post = postsList[1],
+                    PostPostId = postsList[1].PostId,
+                    Text = "Comment_2"
+                },
+                new Comment()
+                {
+                    Post = postsList[1],
+                    PostPostId = postsList[1].PostId,
+                    Text = "Comment_3"
+                },
+                new Comment()
+                {
+                    Post = postsList[1],
+                    PostPostId = postsList[1].PostId,
+                    Text = "Comment_4"
+                },
+            };
+
             postsList.ForEach(post => post.AddPost());
+            commentsList.ForEach(comment => comment.AddComment());
         }
     }
 }

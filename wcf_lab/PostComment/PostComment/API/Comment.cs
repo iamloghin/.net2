@@ -11,7 +11,7 @@
             using (var ctx = new ModelPostCommentContainer())
             {
                 if (PostPostId == Guid.Empty) return false;
-                if (CommentId != Guid.Empty) return false;
+                if (CommentId == Guid.Empty) return false;
                 ctx.Entry(this).State = EntityState.Added;
                 var p = ctx.Posts.Find(this.PostPostId);
                 ctx.Entry(p).State = EntityState.Unchanged;
