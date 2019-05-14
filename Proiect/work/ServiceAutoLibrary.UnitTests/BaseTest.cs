@@ -16,10 +16,10 @@ namespace CarService.UnitTests
             _autoService = new AutoService();
         }
 
-        [TestCleanup]
+        //[TestCleanup]
         public void TestCleanup()
         {
-            _autoService.DeleteAllEntitiesOnTable("DetaliiComendaMaterial");
+            _autoService.DeleteAllEntitiesOnTable("DetaliuComandaMaterial");
             _autoService.DeleteAllEntitiesOnTable("DetaliiComanda");
             _autoService.DeleteAllEntitiesOnTable("Comenzi");
             _autoService.DeleteAllEntitiesOnTable("Autos");
@@ -171,6 +171,13 @@ namespace CarService.UnitTests
                 var test = _autoService.CreateMecanic(mecanic);
                 Assert.IsTrue(test);
             }
+
+        }
+
+        [TestMethod]
+        public void XCleanAll()
+        {
+            TestCleanup();
         }
     }
 }

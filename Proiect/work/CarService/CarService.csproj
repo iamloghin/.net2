@@ -75,6 +75,9 @@
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Common\Exceptions\DbEntityCustomException.cs" />
+    <Compile Include="Common\Logger\LogBase.cs" />
+    <Compile Include="Common\Logger\LogHelper.cs" />
+    <Compile Include="Common\Logger\LogTarget.cs" />
     <Compile Include="DetaliuComanda.cs">
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
@@ -167,5 +170,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

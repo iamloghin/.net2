@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+
+    using CarService.Common.Logger;
+
     using Common.Exceptions;
     using CarService.Repository.Read.Auto;
     using CarService.Repository.Read.Client;
@@ -56,9 +59,11 @@
 
         public void DeleteAllEntitiesOnTable(string tableName)
         {
-            var count = context.Database.SqlQuery<int>("SELECT COUNT(OBJECT_ID(@p0, 'U'))", tableName);
+            string databaseName = context.Database.Connection.Database;
+            var count = context.Database.SqlQuery<int>($"SELECT COUNT(*) FROM [{databaseName}].[dbo].[{tableName}]");
             if (count.Any() && count.First() > 0)
             {
+                LogHelper.Log(LogTarget.File, $"Deleted {count.First()} items from {tableName}");
                 context.Database.ExecuteSqlCommand($"DELETE FROM {tableName}");
             }
         }

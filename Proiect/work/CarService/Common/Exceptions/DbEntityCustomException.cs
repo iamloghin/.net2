@@ -4,6 +4,8 @@
     using System.Data.Entity.Validation;
     using System.Text;
 
+    using CarService.Common.Logger;
+
     public class DbEntityCustomException : Exception
     {
         private static readonly StringBuilder ExceptionObject = new StringBuilder();
@@ -14,7 +16,18 @@
 
         public static string BuildMessageExceptions(Exception exception)
         {
-            if (!(exception is DbEntityValidationException)) return exception.Message;
+            if (!(exception is DbEntityValidationException))
+            {
+                var exceptionTree = exception;
+
+                while (exceptionTree != null && exceptionTree.Message.Contains("See the inner exception"))
+                {
+                    exceptionTree = exceptionTree.InnerException;
+                }
+
+                LogHelper.Log(LogTarget.EventLog, exceptionTree.Message);
+                return exceptionTree.Message;
+            }
 
             var conversException = (DbEntityValidationException) exception;
 
@@ -29,6 +42,7 @@
                 }
             }
 
+            LogHelper.Log(LogTarget.EventLog, ExceptionObject.ToString());
             return ExceptionObject.ToString();
         }
     }

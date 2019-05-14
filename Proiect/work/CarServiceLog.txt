@@ -1,0 +1,6 @@
+5/14/2019 11:45:10 AM: Deleted 1 items from DetaliiComanda.
+5/14/2019 11:45:10 AM: Deleted 1 items from Comenzi.
+5/14/2019 11:45:10 AM: Deleted 1 items from Autos.
+5/14/2019 11:45:10 AM: Deleted 4 items from Clienti.
+5/14/2019 11:45:10 AM: Deleted 5 items from Mecanici.
+5/14/2019 11:45:10 AM: Deleted 1 items from Sasiuri.
