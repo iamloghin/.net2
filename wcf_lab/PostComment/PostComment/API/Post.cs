@@ -11,7 +11,7 @@
         {
             using (var ctx = new ModelPostCommentContainer())
             {
-                if (PostId != Guid.Empty) return false;
+                if (PostId == Guid.Empty) return false;
                 ctx.Entry(this).State = EntityState.Added;
                 ctx.SaveChanges();
                 return true;

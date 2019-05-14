@@ -4,7 +4,7 @@ namespace PostComment
 {
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    
+
     [DataContract(IsReference = true)]
     public sealed partial class Post
     {
@@ -13,7 +13,7 @@ namespace PostComment
         {
             Comments = new HashSet<Comment>();
         }
-    
+
         [DataMember]
         public System.Guid PostId { get; set; }
 
@@ -25,7 +25,7 @@ namespace PostComment
 
         [DataMember]
         public System.DateTime Date { get; set; }
-    
+
         [DataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Comment> Comments { get; set; }
