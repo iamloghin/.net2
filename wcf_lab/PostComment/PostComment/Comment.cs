@@ -16,11 +16,6 @@ namespace PostComment
     [DataContract(IsReference = true)]
     public partial class Comment
     {
-        public Comment()
-        {
-            CommentId = new Guid();
-        }
-
         [DataMember]
         public System.Guid CommentId { get; set; }
 

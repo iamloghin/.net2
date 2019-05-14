@@ -8,24 +8,27 @@ namespace ClientPostComment
 {
     public partial class Form1 : Form
     {
-        private List<Post> _posts = new List<Post>();
+        private List<Post> Posts = new List<Post>();
 
         public Form1()
         {
             InitializeComponent();
+            Form1_Load();
         }
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void Form1_Load()
         {
-            _posts = LoadPosts().ToList();
-            dgp.DataSource = _posts;
+            Posts = LoadPosts().ToList();
+            dgp.DataSource = Posts;
             dgp.Columns[0].Width = 0;
             if (dgp.Rows.Count > 0)
-                dgc.DataSource = _posts[0].Comments;
+                dgc.DataSource = Posts[0].Comments;
         }
-        private static PostComment.Post[] LoadPosts()
+
+        private static IEnumerable<Post> LoadPosts()
         {
-            PostCommentClient pc = new PostCommentClient();
-            PostComment.Post[] p = pc.GetPosts();
+            var pc = new PostCommentClient();
+            var p = pc.GetPosts();
             return p;
         }
 
@@ -34,7 +37,7 @@ namespace ClientPostComment
             if (e.RowIndex < 0)
                 return;
             dgc.DataSource = null;
-            dgc.DataSource = _posts[e.RowIndex].Comments;
+            dgc.DataSource = Posts[e.RowIndex].Comments;
         }
     }
 }

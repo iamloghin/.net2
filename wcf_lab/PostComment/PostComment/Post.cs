@@ -11,7 +11,6 @@ namespace PostComment
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Post()
         {
-            PostId = new Guid();
             Comments = new HashSet<Comment>();
         }
     

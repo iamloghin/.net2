@@ -29,7 +29,7 @@ namespace PostComment
         
         private string DomainField;
         
-        private System.Guid PostIdField;
+        private int PostIdField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
@@ -96,7 +96,7 @@ namespace PostComment
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid PostId
+        public int PostId
         {
             get
             {
@@ -117,11 +117,11 @@ namespace PostComment
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private System.Guid CommentIdField;
+        private int CommentIdField;
         
         private PostComment.Post PostField;
         
-        private System.Guid PostPostIdField;
+        private int PostPostIdField;
         
         private string TextField;
         
@@ -138,7 +138,7 @@ namespace PostComment
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid CommentId
+        public int CommentId
         {
             get
             {
@@ -164,7 +164,7 @@ namespace PostComment
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid PostPostId
+        public int PostPostId
         {
             get
             {
@@ -210,16 +210,16 @@ public interface IPostComment
     System.Threading.Tasks.Task<PostComment.Post> UpdatePostAsync(PostComment.Post post);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INterfacePost/DeletePost", ReplyAction="http://tempuri.org/INterfacePost/DeletePostResponse")]
-    int DeletePost(System.Guid id);
+    int DeletePost(int id);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INterfacePost/DeletePost", ReplyAction="http://tempuri.org/INterfacePost/DeletePostResponse")]
-    System.Threading.Tasks.Task<int> DeletePostAsync(System.Guid id);
+    System.Threading.Tasks.Task<int> DeletePostAsync(int id);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INterfacePost/GetPostById", ReplyAction="http://tempuri.org/INterfacePost/GetPostByIdResponse")]
-    PostComment.Post GetPostById(System.Guid id);
+    PostComment.Post GetPostById(int id);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INterfacePost/GetPostById", ReplyAction="http://tempuri.org/INterfacePost/GetPostByIdResponse")]
-    System.Threading.Tasks.Task<PostComment.Post> GetPostByIdAsync(System.Guid id);
+    System.Threading.Tasks.Task<PostComment.Post> GetPostByIdAsync(int id);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INterfacePost/GetPosts", ReplyAction="http://tempuri.org/INterfacePost/GetPostsResponse")]
     PostComment.Post[] GetPosts();
@@ -240,10 +240,10 @@ public interface IPostComment
     System.Threading.Tasks.Task<PostComment.Comment> UpdateCommentAsync(PostComment.Comment newComment);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INterfaceComment/GetCommentById", ReplyAction="http://tempuri.org/INterfaceComment/GetCommentByIdResponse")]
-    PostComment.Comment GetCommentById(System.Guid id);
+    PostComment.Comment GetCommentById(int id);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INterfaceComment/GetCommentById", ReplyAction="http://tempuri.org/INterfaceComment/GetCommentByIdResponse")]
-    System.Threading.Tasks.Task<PostComment.Comment> GetCommentByIdAsync(System.Guid id);
+    System.Threading.Tasks.Task<PostComment.Comment> GetCommentByIdAsync(int id);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -300,22 +300,22 @@ public partial class PostCommentClient : System.ServiceModel.ClientBase<IPostCom
         return base.Channel.UpdatePostAsync(post);
     }
     
-    public int DeletePost(System.Guid id)
+    public int DeletePost(int id)
     {
         return base.Channel.DeletePost(id);
     }
     
-    public System.Threading.Tasks.Task<int> DeletePostAsync(System.Guid id)
+    public System.Threading.Tasks.Task<int> DeletePostAsync(int id)
     {
         return base.Channel.DeletePostAsync(id);
     }
     
-    public PostComment.Post GetPostById(System.Guid id)
+    public PostComment.Post GetPostById(int id)
     {
         return base.Channel.GetPostById(id);
     }
     
-    public System.Threading.Tasks.Task<PostComment.Post> GetPostByIdAsync(System.Guid id)
+    public System.Threading.Tasks.Task<PostComment.Post> GetPostByIdAsync(int id)
     {
         return base.Channel.GetPostByIdAsync(id);
     }
@@ -350,12 +350,12 @@ public partial class PostCommentClient : System.ServiceModel.ClientBase<IPostCom
         return base.Channel.UpdateCommentAsync(newComment);
     }
     
-    public PostComment.Comment GetCommentById(System.Guid id)
+    public PostComment.Comment GetCommentById(int id)
     {
         return base.Channel.GetCommentById(id);
     }
     
-    public System.Threading.Tasks.Task<PostComment.Comment> GetCommentByIdAsync(System.Guid id)
+    public System.Threading.Tasks.Task<PostComment.Comment> GetCommentByIdAsync(int id)
     {
         return base.Channel.GetCommentByIdAsync(id);
     }
