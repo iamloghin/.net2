@@ -10,19 +10,29 @@
 namespace CarService
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [DataContract(IsReference = true)]
     public partial class Auto
     {
         public Auto()
         {
             this.Id = Guid.NewGuid();
         }
+
+        [DataMember]
         public System.Guid Id { get; set; }
+
+        [DataMember]
         public string NumarAuto { get; set; }
+
+        [DataMember]
         public string SerieSasiu { get; set; }
-    
+
+        [DataMember]
         public virtual Sasiu Sasiu { get; set; }
+
+        [DataMember]
         public virtual Client Client { get; set; }
     }
 }

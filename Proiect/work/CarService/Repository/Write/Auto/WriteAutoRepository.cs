@@ -1,10 +1,9 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-
-namespace CarService.Repository.Write.Auto
+﻿namespace CarService.Repository.Write.Auto
 {
     using System.Linq;
-        
+    using System;
+    using System.Data.Entity.Migrations;
+
     /// <inheritdoc />
     /// <summary>
     /// Class WriteAutoRepository.
@@ -23,7 +22,7 @@ namespace CarService.Repository.Write.Auto
         {
             _context = context;
         }
-            
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified automatic.
@@ -33,7 +32,7 @@ namespace CarService.Repository.Write.Auto
         {
             _context.Autos.Add(auto);
         }
-            
+
         /// <inheritdoc />
         /// <summary>
         /// Deletes the specified identifier.
@@ -60,7 +59,7 @@ namespace CarService.Repository.Write.Auto
         {
             return _context.Autos.Any(a => a.Id == id);
         }
-            
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.

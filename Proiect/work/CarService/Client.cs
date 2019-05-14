@@ -10,9 +10,10 @@
 namespace CarService
 {
     using System;
-    using System.Collections.Generic;
-    
-    public partial class Client
+    using System.Runtime.Serialization;
+
+    [DataContract(IsReference = true)]
+    public sealed partial class Client
     {
         public Client()
         {
@@ -23,13 +24,29 @@ namespace CarService
         {
             this.Id = id;
         }
+
+        [DataMember]
         public System.Guid Id { get; set; }
+
+        [DataMember]
         public string Nume { get; set; }
+
+        [DataMember]
         public string Prenume { get; set; }
+
+        [DataMember]
         public string Adresa { get; set; }
+
+        [DataMember]
         public string Localitate { get; set; }
+
+        [DataMember]
         public string Judet { get; set; }
+
+        [DataMember]
         public string Telefon { get; set; }
+
+        [DataMember]
         public string Email { get; set; }
     }
 }

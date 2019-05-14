@@ -10,17 +10,23 @@
 namespace CarService
 {
     using System;
-    using System.Collections.Generic;
-    
-    public partial class Sasiu
+    using System.Runtime.Serialization;
+
+    [DataContract(IsReference = true)]
+    public sealed partial class Sasiu
     {
         public Sasiu()
         {
             this.Id = Guid.NewGuid();
         }
 
+        [DataMember]
         public System.Guid Id { get; set; }
+
+        [DataMember]
         public string CodSasiu { get; set; }
+
+        [DataMember]
         public string Denumire { get; set; }
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
-
-namespace CarService.Repository.Write.Auto
+﻿namespace CarService.Repository.Write.Auto
 {
-    
+    using System;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IWriteAutoRepository

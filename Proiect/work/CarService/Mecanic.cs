@@ -10,16 +10,23 @@
 namespace CarService
 {
     using System;
-    using System.Collections.Generic;
-    
-    public partial class Mecanic
+    using System.Runtime.Serialization;
+
+    [DataContract(IsReference = true)]
+    public sealed partial class Mecanic
     {
         public Mecanic()
         {
             this.Id = Guid.NewGuid();
         }
+
+        [DataMember]
         public System.Guid Id { get; set; }
+
+        [DataMember]
         public string Nume { get; set; }
+
+        [DataMember]
         public string Prenume { get; set; }
     }
 }

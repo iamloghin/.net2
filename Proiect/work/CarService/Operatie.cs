@@ -10,9 +10,10 @@
 namespace CarService
 {
     using System;
-    using System.Collections.Generic;
-    
-    public partial class Operatie
+    using System.Runtime.Serialization;
+
+    [DataContract(IsReference = true)]
+    public sealed partial class Operatie
     {
         public Operatie()
         {
@@ -24,8 +25,13 @@ namespace CarService
             this.Id = id;
         }
 
+        [DataMember]
         public System.Guid Id { get; set; }
+
+        [DataMember]
         public string Denumire { get; set; }
+
+        [DataMember]
         public Nullable<decimal> TimpExecutie { get; set; }
     }
 }

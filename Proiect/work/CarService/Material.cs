@@ -10,9 +10,10 @@
 namespace CarService
 {
     using System;
-    using System.Collections.Generic;
-    
-    public partial class Material
+    using System.Runtime.Serialization;
+
+    [DataContract(IsReference = true)]
+    public sealed partial class Material
     {
         public Material()
         {
@@ -23,10 +24,20 @@ namespace CarService
         {
             this.Id = id;
         }
+
+        [DataMember]
         public System.Guid Id { get; set; }
+
+        [DataMember]
         public string Denumire { get; set; }
+
+        [DataMember]
         public decimal Cantitate { get; set; }
+
+        [DataMember]
         public decimal Pret { get; set; }
+
+        [DataMember]
         public System.DateTime DataAprovizionare { get; set; }
     }
 }
