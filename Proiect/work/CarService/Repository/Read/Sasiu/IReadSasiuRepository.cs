@@ -1,14 +1,16 @@
-﻿using System;
-
-namespace CarService.Repository.Read.Sasiu
+﻿namespace CarService.Repository.Read.Sasiu
 {
+    using System;
+
+    using Sasiu = CarService.Sasiu;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IReadSasiuRepository
-    /// Implements the <see cref="!:CarService.Repository.Read.IReadRepository{CarService.Sasiu}" />
+    /// Implements the <see cref="Sasiu" />
     /// </summary>
-    /// <seealso cref="!:CarService.Repository.Read.IReadRepository{CarService.Sasiu}" />
-    internal interface IReadSasiuRepository: IReadRepository<CarService.Sasiu>
+    /// <seealso cref="Sasiu" />
+    internal interface IReadSasiuRepository: IReadRepository<Sasiu>
     {
         /// <summary>
         /// Gets the cod sasiu.

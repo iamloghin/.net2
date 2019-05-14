@@ -4,6 +4,8 @@
     using System;
     using System.Data.Entity.Migrations;
 
+    using Auto = CarService.Auto;
+
     /// <inheritdoc />
     /// <summary>
     /// Class WriteAutoRepository.
@@ -28,7 +30,7 @@
         /// Creates the specified automatic.
         /// </summary>
         /// <param name="auto">The automatic.</param>
-        public void Create(CarService.Auto auto)
+        public void Create(Auto auto)
         {
             _context.Autos.Add(auto);
         }
@@ -44,7 +46,7 @@
             _context.Autos.Remove(auto);
         }
 
-        public void Update(CarService.Auto auto)
+        public void Update(Auto auto)
         {
             _context.Autos.AddOrUpdate(auto);
         }

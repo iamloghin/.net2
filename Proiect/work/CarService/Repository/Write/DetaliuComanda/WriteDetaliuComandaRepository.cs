@@ -1,9 +1,10 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-
-namespace CarService.Repository.Write.DetaliuComanda
+﻿namespace CarService.Repository.Write.DetaliuComanda
 {
+    using System;
     using System.Linq;
+    using System.Data.Entity.Migrations;
+
+    using DetaliuComanda = CarService.DetaliuComanda;
 
     /// <inheritdoc />
     /// <summary>
@@ -23,17 +24,17 @@ namespace CarService.Repository.Write.DetaliuComanda
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified detaliu comanda.
         /// </summary>
         /// <param name="detaliuComanda">The detaliu comanda.</param>
-        public void Create(CarService.DetaliuComanda detaliuComanda)
+        public void Create(DetaliuComanda detaliuComanda)
         {
             _context.DetaliiComanda.Add(detaliuComanda);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Deletes the specified identifier.
@@ -60,7 +61,7 @@ namespace CarService.Repository.Write.DetaliuComanda
         {
             return _context.DetaliiComanda.Any(d => d.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.

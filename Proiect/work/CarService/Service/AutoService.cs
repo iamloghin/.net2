@@ -35,23 +35,23 @@
     {
         private static CarServiceModelContainer context;
 
-        private ReadAutoRepository _autoRead;
-        private ReadClientRepository _clientRead;
-        private ReadComandaRepository _comandaRead;
-        private ReadDetaliuComandaRepository _detaliuComandaRead;
-        private ReadImagineRepository _imagineRead;
-        private ReadMaterialRepository _materialRead;
-        private ReadMecanicRepository _mecanicRead;
-        private ReadOperatieRepository _operatieRead;
+        private IReadAutoRepository _autoRead;
+        private IReadClientRepository _clientRead;
+        private IReadComandaRepository _comandaRead;
+        private IReadDetaliuComandaRepository _detaliuComandaRead;
+        private IReadImagineRepository _imagineRead;
+        private IReadMaterialRepository _materialRead;
+        private IReadMecanicRepository _mecanicRead;
+        private IReadOperatieRepository _operatieRead;
 
-        private WriteAutoRepository _autoWrite;
-        private WriteClientRepository _clientWrite;
-        private WriteComandaRepository _comandaWrite;
-        private WriteDetaliuComandaRepository _detaliuComandaWrite;
-        private WriteImagineRepository _imagineWrite;
-        private WriteMaterialRepository _materialWrite;
-        private WriteMecanicRepository _mecanicWrite;
-        private WriteOperatieRepository _operatieWrite;
+        private IWriteAutoRepository _autoWrite;
+        private IWriteClientRepository _clientWrite;
+        private IWriteComandaRepository _comandaWrite;
+        private IWriteDetaliuComandaRepository _detaliuComandaWrite;
+        private IWriteImagineRepository _imagineWrite;
+        private IWriteMaterialRepository _materialWrite;
+        private IWriteMecanicRepository _mecanicWrite;
+        private IWriteOperatieRepository _operatieWrite;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutoService"/> class.

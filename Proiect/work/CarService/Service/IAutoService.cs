@@ -169,18 +169,18 @@
         /// <summary>
         /// Determines whether this instance [can be refuzata] the specified identifier.
         /// </summary>
-        /// <param name="Id">The identifier.</param>
+        /// <param name="id">The identifier.</param>
         /// <returns><c>true</c> if this instance [can be refuzata] the specified identifier; otherwise, <c>false</c>.</returns>
-        bool CanBeRefuzata(Guid Id);
+        bool CanBeRefuzata(Guid id);
 
         /// <summary>
         /// Sets the comanda status.
         /// </summary>
-        /// <param name="Id">The identifier.</param>
+        /// <param name="id">The identifier.</param>
         /// <param name="stareComanda">The stare comanda.</param>
         /// <param name="descriere">The descriere.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        bool SetComandaStatus(Guid Id, StareComanda stareComanda, string descriere);
+        bool SetComandaStatus(Guid id, StareComanda stareComanda, string descriere);
 
         /// <summary>
         /// Comandas the add material.

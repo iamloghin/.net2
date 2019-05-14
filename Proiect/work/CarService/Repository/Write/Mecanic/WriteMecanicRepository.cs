@@ -1,16 +1,17 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-
-namespace CarService.Repository.Write.Mecanic
+﻿namespace CarService.Repository.Write.Mecanic
 {
+    using System;
     using System.Linq;
+    using System.Data.Entity.Migrations;
+
+    using Mecanic = CarService.Mecanic;
 
     /// <inheritdoc />
     /// <summary>
     /// Class WriteMecanicRepository.
-    /// Implements the <see cref="T:CarService.Repository.Write.Mecanic.IWriteMecanicRepository" />
+    /// Implements the <see cref="IWriteMecanicRepository" />
     /// </summary>
-    /// <seealso cref="T:CarService.Repository.Write.Mecanic.IWriteMecanicRepository" />
+    /// <seealso cref="IWriteMecanicRepository" />
     internal class WriteMecanicRepository: IWriteMecanicRepository
     {
         private readonly CarServiceModelContainer _context;
@@ -23,17 +24,17 @@ namespace CarService.Repository.Write.Mecanic
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified mecanic.
         /// </summary>
         /// <param name="mecanic">The mecanic.</param>
-        public void Create(CarService.Mecanic mecanic)
+        public void Create(Mecanic mecanic)
         {
             _context.Mecanici.Add(mecanic);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Deletes the specified identifier.
@@ -45,7 +46,7 @@ namespace CarService.Repository.Write.Mecanic
             _context.Mecanici.Remove(mecanic);
         }
 
-        public void Update(CarService.Mecanic mecanic)
+        public void Update(Mecanic mecanic)
         {
             _context.Mecanici.AddOrUpdate(mecanic);
         }
@@ -60,7 +61,7 @@ namespace CarService.Repository.Write.Mecanic
         {
             return _context.Mecanici.Any(m => m.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.

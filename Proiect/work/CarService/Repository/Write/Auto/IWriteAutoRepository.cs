@@ -2,13 +2,15 @@
 {
     using System;
 
+    using Auto = CarService.Auto;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IWriteAutoRepository
     /// Implements the <see cref="Auto" />
     /// </summary>
     /// <seealso cref="Auto" />
-    internal interface IWriteAutoRepository: IWriteRepository<CarService.Auto>
+    internal interface IWriteAutoRepository: IWriteRepository<Auto>
     {
         /// <summary>
         /// Sets the numar automatic.

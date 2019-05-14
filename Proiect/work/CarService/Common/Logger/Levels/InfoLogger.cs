@@ -17,11 +17,19 @@
 
             lock (LockObj)
             {
-                using (var file = File.Open(FilePath, FileMode.Append, FileAccess.Write))
-                using (var streamWriter = new StreamWriter(file))
+                Stream file = null;
+                try
                 {
-                    streamWriter.WriteLine($"Info::Logger: {DateTime.Now} -- {message}.");
-                    streamWriter.Close();
+                    file = File.Open(FilePath, FileMode.Append, FileAccess.Write);
+                    using (var streamWriter = new StreamWriter(file))
+                    {
+                        streamWriter.WriteLine($"Info::Logger: {DateTime.Now} -- {message}.");
+                        streamWriter.Close();
+                    }
+                }
+                finally
+                {
+                    file?.Dispose();
                 }
             }
 

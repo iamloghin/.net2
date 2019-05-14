@@ -1,8 +1,10 @@
-﻿using System;
-
-namespace CarService.Repository.Read.Imagine
+﻿namespace CarService.Repository.Read.Imagine
 {
-    internal interface IReadImagineRepository: IReadRepository<CarService.Imagine>
+    using System;
+
+    using Imagine = CarService.Imagine;
+
+    internal interface IReadImagineRepository: IReadRepository<Imagine>
     {
         /// <summary>
         /// Gets the titlu.
