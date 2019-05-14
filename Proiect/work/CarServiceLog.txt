@@ -4,3 +4,9 @@ Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 1 items from Autos.
 Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 4 items from Clienti.
 Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 5 items from Mecanici.
 Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 1 items from Sasiuri.
+Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 1 items from DetaliiComanda.
+Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 1 items from Comenzi.
+Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 1 items from Autos.
+Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 4 items from Clienti.
+Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 5 items from Mecanici.
+Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 1 items from Sasiuri.

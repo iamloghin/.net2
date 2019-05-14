@@ -37,12 +37,12 @@
 
         private IReadAutoRepository _autoRead;
         private IReadClientRepository _clientRead;
-        private IReadComandaRepository _comandaRead;
+        // private IReadComandaRepository _comandaRead;
         private IReadDetaliuComandaRepository _detaliuComandaRead;
-        private IReadImagineRepository _imagineRead;
+        // private IReadImagineRepository _imagineRead;
         private IReadMaterialRepository _materialRead;
         private IReadMecanicRepository _mecanicRead;
-        private IReadOperatieRepository _operatieRead;
+        // private IReadOperatieRepository _operatieRead;
 
         private IWriteAutoRepository _autoWrite;
         private IWriteClientRepository _clientWrite;
