@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using CarService;
 using CarService.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ServiceAutoLibrary.UnitTests
+namespace CarService.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class BaseTest
     {
         AutoService _autoService;
 
@@ -17,7 +16,7 @@ namespace ServiceAutoLibrary.UnitTests
             _autoService = new AutoService();
         }
 
-        //[TestCleanup]
+        [TestCleanup]
         public void TestCleanup()
         {
             _autoService.DeleteAllEntitiesOnTable("DetaliiComendaMaterial");

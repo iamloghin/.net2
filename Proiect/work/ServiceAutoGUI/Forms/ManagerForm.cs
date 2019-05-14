@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using CarService.Service;
 
-namespace ServiceAutoGUI.Forms
+namespace CarService.WF.Forms
 {
     public partial class ManagerForm : Form
     {

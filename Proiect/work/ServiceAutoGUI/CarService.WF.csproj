@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{869C0198-A9F9-47B1-BCF0-958172ABA02C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ServiceAutoGUI</RootNamespace>
-    <AssemblyName>ServiceAutoGUI</AssemblyName>
+    <RootNamespace>CarService.WF</RootNamespace>
+    <AssemblyName>CarService.WF</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -153,6 +153,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

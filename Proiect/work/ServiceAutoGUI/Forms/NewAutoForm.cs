@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using CarService;
 using CarService.Service;
 
-namespace ServiceAutoGUI.Forms
+namespace CarService.WF.Forms
 {
     public partial class NewAutoForm : Form
     {

@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAutoLibrary.UnitTests", "..\ServiceAutoLibrary.UnitTests\ServiceAutoLibrary.UnitTests.csproj", "{2A3F0244-B5F8-4D7F-B84E-15850130126B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.UnitTests", "..\ServiceAutoLibrary.UnitTests\CarService.UnitTests.csproj", "{2A3F0244-B5F8-4D7F-B84E-15850130126B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAutoGUI", "..\ServiceAutoGUI\ServiceAutoGUI.csproj", "{869C0198-A9F9-47B1-BCF0-958172ABA02C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.WF", "..\ServiceAutoGUI\CarService.WF.csproj", "{869C0198-A9F9-47B1-BCF0-958172ABA02C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService", "..\CarService\CarService.csproj", "{4545B14C-F550-4890-9276-044BE93A0B3C}"
 EndProject

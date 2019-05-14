@@ -1,4 +1,4 @@
-﻿namespace ServiceAutoGUI.Forms
+﻿namespace CarService.WF.Forms
 {
     using System;
     using System.Windows.Forms;

@@ -8,7 +8,7 @@ using CarService.Service;
 using CarService;
 using static System.Drawing.Image;
 
-namespace ServiceAutoGUI.Forms
+namespace CarService.WF.Forms
 {
     public partial class NewComandaForm : Form
     {

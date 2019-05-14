@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ServiceAutoGUI.Forms
+namespace CarService.WF.Forms
 {
     partial class NewAutoForm
     {
