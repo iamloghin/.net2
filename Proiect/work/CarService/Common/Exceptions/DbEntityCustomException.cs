@@ -5,6 +5,7 @@
     using System.Text;
 
     using CarService.Common.Logger;
+    using CarService.Common.Logger.Enum;
 
     public class DbEntityCustomException : Exception
     {
@@ -25,7 +26,7 @@
                     exceptionTree = exceptionTree.InnerException;
                 }
 
-                LogHelper.Log(LogTarget.EventLog, exceptionTree.Message);
+                Logger.Log.Handle(LogLevel.Error, exceptionTree.Message);
                 return exceptionTree.Message;
             }
 
@@ -42,7 +43,7 @@
                 }
             }
 
-            LogHelper.Log(LogTarget.EventLog, ExceptionObject.ToString());
+            Logger.Log.Handle(LogLevel.Error, ExceptionObject.ToString());
             return ExceptionObject.ToString();
         }
     }

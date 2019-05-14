@@ -5,6 +5,7 @@
     using System.Linq;
 
     using CarService.Common.Logger;
+    using CarService.Common.Logger.Enum;
 
     using Common.Exceptions;
     using CarService.Repository.Read.Auto;
@@ -63,7 +64,7 @@
             var count = context.Database.SqlQuery<int>($"SELECT COUNT(*) FROM [{databaseName}].[dbo].[{tableName}]");
             if (count.Any() && count.First() > 0)
             {
-                LogHelper.Log(LogTarget.File, $"Deleted {count.First()} items from {tableName}");
+                Logger.Log.Handle(LogLevel.Info, $"Deleted {count.First()} items from {tableName}");
                 context.Database.ExecuteSqlCommand($"DELETE FROM {tableName}");
             }
         }

@@ -75,9 +75,12 @@
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Common\Exceptions\DbEntityCustomException.cs" />
-    <Compile Include="Common\Logger\LogBase.cs" />
-    <Compile Include="Common\Logger\LogHelper.cs" />
-    <Compile Include="Common\Logger\LogTarget.cs" />
+    <Compile Include="Common\Logger\Levels\ErrorLogger.cs" />
+    <Compile Include="Common\Logger\ILogger.cs" />
+    <Compile Include="Common\Logger\Levels\BaseLogger.cs" />
+    <Compile Include="Common\Logger\Levels\InfoLogger.cs" />
+    <Compile Include="Common\Logger\Logger.cs" />
+    <Compile Include="Common\Logger\Enum\LogLevel.cs" />
     <Compile Include="DetaliuComanda.cs">
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
