@@ -20,9 +20,9 @@
                 using (var file = File.Open(FilePath, FileMode.Append, FileAccess.Write))
                     using (var streamWriter = new StreamWriter(file))
                     {
-                        streamWriter.WriteLine("_______________________________");
-                        streamWriter.WriteLine($"Error::Logger:{DateTime.Now}");
+                        streamWriter.WriteLine($"Error::Logger::{DateTime.Now}");
                         streamWriter.WriteLine(message);
+                        streamWriter.WriteLine("_______________________________");
                         streamWriter.Close();
                     }
             }

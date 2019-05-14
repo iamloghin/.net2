@@ -171,7 +171,6 @@ namespace CarService.UnitTests
                 var test = _autoService.CreateMecanic(mecanic);
                 Assert.IsTrue(test);
             }
-
         }
 
         [TestMethod]
