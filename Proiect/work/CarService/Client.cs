@@ -15,11 +15,13 @@ namespace CarService
     [DataContract(IsReference = true)]
     public sealed partial class Client
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
             this.Id = Guid.NewGuid();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client(Guid id)
         {
             this.Id = id;

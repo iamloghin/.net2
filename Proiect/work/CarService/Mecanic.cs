@@ -15,6 +15,7 @@ namespace CarService
     [DataContract(IsReference = true)]
     public sealed partial class Mecanic
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Mecanic()
         {
             this.Id = Guid.NewGuid();

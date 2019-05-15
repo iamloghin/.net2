@@ -15,11 +15,13 @@ namespace CarService
     [DataContract(IsReference = true)]
     public partial class Imagine
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Imagine()
         {
             this.Id = Guid.NewGuid();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Imagine(Guid id)
         {
             this.Id = id;
