@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using CarService.Service;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace CarService.UnitTests
+﻿namespace CarServiceLibrary.UnitTests
 {
+    using System;
+    using System.Collections.Generic;
+
+    using CarService;
+    using CarService.Service;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class BaseTest
     {
