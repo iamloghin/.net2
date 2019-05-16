@@ -17,7 +17,6 @@
         {
             var pc = new AutoServiceClient();
             var x  = pc.GetAvailabelMecanics();
-            var z = "debug";
         }
     }
 }

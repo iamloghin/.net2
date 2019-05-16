@@ -3,6 +3,8 @@ UAIC - INFO - III
 
 developer command prompt
 
-  wcftestclient
-  
-  svcutil http://localhost:8000/PC -config:app.config -out:proxy.cs
+wcftestclient
+
+svcutil http://localhost:8080/service -config:app.config -out:C:\proxy.cs
+
+Update-Package -Reinstall
