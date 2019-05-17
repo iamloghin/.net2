@@ -105,5 +105,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarService.WCF\CarService.WCF.csproj">
+      <Project>{a12e8181-4385-4973-bcb6-ffd261c795a1}</Project>
+      <Name>CarService.WCF</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

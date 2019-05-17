@@ -4,7 +4,7 @@
     using System.IO;
     using CarService.Common.Logger.Enum;
 
-    public class InfoLogger : BaseLogger
+    internal class InfoLogger : BaseLogger
     {
         public InfoLogger(LogLevel level)
         {

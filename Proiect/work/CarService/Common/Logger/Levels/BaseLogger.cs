@@ -1,8 +1,6 @@
 ﻿namespace CarService.Common.Logger.Levels
 {
     using System.IO;
-    using System.Text;
-
     using CarService.Common.Logger.Enum;
 
     public abstract class BaseLogger: ILogger

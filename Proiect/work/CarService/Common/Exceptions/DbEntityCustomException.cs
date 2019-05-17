@@ -2,16 +2,24 @@
 {
     using System;
     using System.Data.Entity.Validation;
+    using System.Runtime.Serialization;
     using System.Text;
 
     using CarService.Common.Logger;
     using CarService.Common.Logger.Enum;
 
+    [Serializable]
     public class DbEntityCustomException : Exception
     {
         private static readonly StringBuilder ExceptionObject = new StringBuilder();
 
-        public DbEntityCustomException(string message) : base(message)
+        public DbEntityCustomException(string message)
+            : base(message)
+        {
+        }
+
+        protected DbEntityCustomException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
 
