@@ -18,5 +18,10 @@
             var pc = new AutoServiceClient();
             var x  = pc.GetAvailabelMecanics();
         }
+
+        private void ShutdownButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
