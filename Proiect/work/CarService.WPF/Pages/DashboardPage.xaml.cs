@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 
 namespace CarService.WPF.Pages
 {
+    using CarService.WPF.Common;
+
     /// <summary>
     /// Interaction logic for DashboardPage.xaml
     /// </summary>
@@ -40,6 +42,7 @@ namespace CarService.WPF.Pages
                 this._dashboardOperatii.Text = autoApi.GetAllOperations().Count().ToString();
                 this._dashboardOperatiiInfo.Text = $"Total executing time is {autoApi.GetOperationsTotalTime().ToString()}";
             }
+            CommonItem.GetTextBox().Text = "DASHBOARD";
         }
     }
 }

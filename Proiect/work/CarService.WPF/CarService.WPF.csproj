@@ -92,6 +92,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\CommonItem.cs" />
+    <Compile Include="Common\NotEmptyValidationRule.cs" />
     <Compile Include="Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>
@@ -107,6 +108,10 @@
     <Compile Include="Pages\NewClientPage.xaml.cs">
       <DependentUpon>NewClientPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\NewComandaPage.xaml.cs">
+      <DependentUpon>NewComandaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="proxy.cs" />
     <Page Include="Pages\ClientPage.xaml">
       <SubType>Designer</SubType>
@@ -125,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\NewClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NewComandaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,15 +183,16 @@
       <Project>{a12e8181-4385-4973-bcb6-ffd261c795a1}</Project>
       <Name>CarService.WCF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CarService\CarService.csproj">
+      <Project>{4545B14C-F550-4890-9276-044BE93A0B3C}</Project>
+      <Name>CarService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\imgs\dashboard_hello.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\imgs\new_client.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\imgs\new_car.gif" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -195,6 +205,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\imgs\minify\new_car.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

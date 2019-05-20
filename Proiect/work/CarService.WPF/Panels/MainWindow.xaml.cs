@@ -1,13 +1,15 @@
 ﻿namespace CarService.WPF
 {
+    using CarService.WPF.Common;
+    using CarService.WPF.Pages;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Documents;
     using System.Windows.Media;
-
-    using CarService.WPF.Common;
-    using CarService.WPF.Pages;
+    using System.Windows.Threading;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -33,25 +35,32 @@
 
         private void DashBoardButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Page dashboardPage = new Dashboard();
-            _mainPanelFrame.NavigationService.Navigate(dashboardPage);
-            _pageName.Text = "DASHBOARD";
+            CommonItem.PageInstent.Clear();
+            _mainPanelFrame.NavigationService.Navigate(new Dashboard());
         }
 
         private void NewClientButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Page newClientPage = new NewClientPage();
-            _mainPanelFrame.NavigationService.Navigate(newClientPage);
+            if (!CommonItem.PageInstent.OfType<NewClientPage>().Any())
+            {
+                CommonItem.PageInstent.Add(new NewClientPage());
+            }
+            _mainPanelFrame.NavigationService.Navigate(CommonItem.PageInstent.OfType<NewClientPage>().First());
             _pageName.Text = "ADD NEW CLIENT";
         }
         private void ClientButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainPanelFrame.Source = new Uri($"/Pages/ClientPage.xaml", UriKind.Relative);
+            if (!CommonItem.PageInstent.OfType<ClientPage>().Any())
+            {
+                CommonItem.PageInstent.Add(new ClientPage());
+            }
+            _mainPanelFrame.NavigationService.Navigate(CommonItem.PageInstent.OfType<ClientPage>().First());
             _pageName.Text = "CLIENT VIEW";
         }
         private void ManagerButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainPanelFrame.Source = new Uri($"/Pages/ManagerPage.xaml", UriKind.Relative);
+            CommonItem.PageInstent.Add(new ManagerPage());
+            _mainPanelFrame.NavigationService.Navigate(CommonItem.PageInstent.LastOrDefault());
             _pageName.Text = "MANAGER VIEW";
         }
     }

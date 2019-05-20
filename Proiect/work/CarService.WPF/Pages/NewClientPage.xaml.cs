@@ -15,24 +15,39 @@ using System.Windows.Shapes;
 
 namespace CarService.WPF.Pages
 {
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    using CarService.Common.Logger;
+    using CarService.Common.Logger.Enum;
+    using CarService.WPF.Annotations;
     using CarService.WPF.Common;
 
     /// <summary>
     /// Interaction logic for NewClientPage.xaml
     /// </summary>
-    public partial class NewClientPage : Page
+    public partial class NewClientPage : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public NewClientPage()
         {
             InitializeComponent();
+        }
+
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void AddClientButtonClick(object sender, RoutedEventArgs e)
         {
             var newClient = new Client()
             {
-                Adresa = _nameFirstTextBox.Text,
-                Email = _nameFirstTextBox.Text,
+                Adresa = _fullAddressBox.Text,
+                Email = _emailBox.Text,
                 Judet = _countryBox.Text,
                 Localitate = _localityBox.Text,
                 Nume = _nameFirstTextBox.Text,
@@ -40,9 +55,12 @@ namespace CarService.WPF.Pages
                 Telefon = _phoneBox.Text
             };
 
-            Page newAutoPage = new NewAutoPage(newClient);
-            CommonItem.GetFrame().NavigationService.Navigate(newAutoPage);
-            CommonItem.GetTextBox().Text = "ADD NEW CLIENT";
+            if (!CommonItem.PageInstent.OfType<NewAutoPage>().Any())
+            {
+                CommonItem.PageInstent.Add(new NewAutoPage(newClient));
+            }
+            CommonItem.GetFrame().NavigationService.Navigate(CommonItem.PageInstent.OfType<NewAutoPage>().First());
+            CommonItem.GetTextBox().Text = "ADD NEW AUTO";
         }
     }
 }
