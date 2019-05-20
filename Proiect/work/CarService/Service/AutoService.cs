@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
 
     using CarService.Common.Logger;
@@ -37,12 +38,12 @@
 
         private IReadAutoRepository _autoRead;
         private IReadClientRepository _clientRead;
-        // private IReadComandaRepository _comandaRead;
+        private IReadComandaRepository _comandaRead;
         private IReadDetaliuComandaRepository _detaliuComandaRead;
-        // private IReadImagineRepository _imagineRead;
+        private IReadImagineRepository _imagineRead;
         private IReadMaterialRepository _materialRead;
         private IReadMecanicRepository _mecanicRead;
-        // private IReadOperatieRepository _operatieRead;
+        private IReadOperatieRepository _operatieRead;
 
         private IWriteAutoRepository _autoWrite;
         private IWriteClientRepository _clientWrite;
@@ -556,12 +557,75 @@
             }
         }
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets all detaliu comenzii.
+        /// </summary>
+        /// <returns>IList&lt;DetaliuComanda&gt;.</returns>
+        /// <exception cref="DbEntityCustomException"></exception>
         public IList<DetaliuComanda> GetAllDetaliuComandas()
         {
             try
             {
                 _detaliuComandaRead = new ReadDetaliuComandaRepository(context);
                 return _detaliuComandaRead.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                var message = DbEntityCustomException.BuildMessageExceptions(e);
+                throw new DbEntityCustomException(message);
+            }
+        }
+
+        public IList<Comanda> GetAllOrders()
+        {
+            try
+            {
+                _comandaRead = new ReadComandaRepository(context);
+                return _comandaRead.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                var message = DbEntityCustomException.BuildMessageExceptions(e);
+                throw new DbEntityCustomException(message);
+            }
+        }
+
+        public IList<Comanda> GetAllDoneOrders()
+        {
+            try
+            {
+                _comandaRead = new ReadComandaRepository(context);
+                return _comandaRead.GetAll().Where(comanda => comanda.DataFinalizare.HasValue).ToList();
+            }
+            catch (Exception e)
+            {
+                var message = DbEntityCustomException.BuildMessageExceptions(e);
+                throw new DbEntityCustomException(message);
+            }
+        }
+
+        public IList<Operatie> GetAllOperations()
+        {
+            try
+            {
+                _operatieRead = new ReadOperatieRepository(context);
+                return _operatieRead.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                var message = DbEntityCustomException.BuildMessageExceptions(e);
+                throw new DbEntityCustomException(message);
+            }
+        }
+
+        public int GetOperationsTotalTime()
+        {
+            try
+            {
+                _operatieRead = new ReadOperatieRepository(context);
+                var response = _operatieRead.GetAll().Where(operatie => operatie.TimpExecutie.HasValue).ToList();
+                return int.Parse(response.Sum(operatie => operatie.TimpExecutie.Value).ToString(CultureInfo.InvariantCulture));
             }
             catch (Exception e)
             {

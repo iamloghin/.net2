@@ -81,6 +81,18 @@
         [OperationContract]
         IList<Mecanic> GetAllMecanics();
 
+        [OperationContract]
+        IList<Comanda> GetAllOrders();
+
+        [OperationContract]
+        IList<Comanda> GetAllDoneOrders();
+
+        [OperationContract]
+        IList<Operatie> GetAllOperations();
+
+        [OperationContract]
+        int GetOperationsTotalTime();
+
 
 
         [OperationContract]

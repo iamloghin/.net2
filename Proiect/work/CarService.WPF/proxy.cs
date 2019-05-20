@@ -1082,6 +1082,30 @@ public interface IAutoService
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllMecanics", ReplyAction="http://tempuri.org/IAutoService/GetAllMecanicsResponse")]
     System.Threading.Tasks.Task<CarService.Mecanic[]> GetAllMecanicsAsync();
     
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllOrders", ReplyAction="http://tempuri.org/IAutoService/GetAllOrdersResponse")]
+    CarService.Comanda[] GetAllOrders();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllOrders", ReplyAction="http://tempuri.org/IAutoService/GetAllOrdersResponse")]
+    System.Threading.Tasks.Task<CarService.Comanda[]> GetAllOrdersAsync();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllDoneOrders", ReplyAction="http://tempuri.org/IAutoService/GetAllDoneOrdersResponse")]
+    CarService.Comanda[] GetAllDoneOrders();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllDoneOrders", ReplyAction="http://tempuri.org/IAutoService/GetAllDoneOrdersResponse")]
+    System.Threading.Tasks.Task<CarService.Comanda[]> GetAllDoneOrdersAsync();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllOperations", ReplyAction="http://tempuri.org/IAutoService/GetAllOperationsResponse")]
+    CarService.Operatie[] GetAllOperations();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllOperations", ReplyAction="http://tempuri.org/IAutoService/GetAllOperationsResponse")]
+    System.Threading.Tasks.Task<CarService.Operatie[]> GetAllOperationsAsync();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetOperationsTotalTime", ReplyAction="http://tempuri.org/IAutoService/GetOperationsTotalTimeResponse")]
+    int GetOperationsTotalTime();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetOperationsTotalTime", ReplyAction="http://tempuri.org/IAutoService/GetOperationsTotalTimeResponse")]
+    System.Threading.Tasks.Task<int> GetOperationsTotalTimeAsync();
+    
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/CanBeRefuzata", ReplyAction="http://tempuri.org/IAutoService/CanBeRefuzataResponse")]
     bool CanBeRefuzata(System.Guid id);
     
@@ -1369,6 +1393,46 @@ public partial class AutoServiceClient : System.ServiceModel.ClientBase<IAutoSer
     public System.Threading.Tasks.Task<CarService.Mecanic[]> GetAllMecanicsAsync()
     {
         return base.Channel.GetAllMecanicsAsync();
+    }
+    
+    public CarService.Comanda[] GetAllOrders()
+    {
+        return base.Channel.GetAllOrders();
+    }
+    
+    public System.Threading.Tasks.Task<CarService.Comanda[]> GetAllOrdersAsync()
+    {
+        return base.Channel.GetAllOrdersAsync();
+    }
+    
+    public CarService.Comanda[] GetAllDoneOrders()
+    {
+        return base.Channel.GetAllDoneOrders();
+    }
+    
+    public System.Threading.Tasks.Task<CarService.Comanda[]> GetAllDoneOrdersAsync()
+    {
+        return base.Channel.GetAllDoneOrdersAsync();
+    }
+    
+    public CarService.Operatie[] GetAllOperations()
+    {
+        return base.Channel.GetAllOperations();
+    }
+    
+    public System.Threading.Tasks.Task<CarService.Operatie[]> GetAllOperationsAsync()
+    {
+        return base.Channel.GetAllOperationsAsync();
+    }
+    
+    public int GetOperationsTotalTime()
+    {
+        return base.Channel.GetOperationsTotalTime();
+    }
+    
+    public System.Threading.Tasks.Task<int> GetOperationsTotalTimeAsync()
+    {
+        return base.Channel.GetOperationsTotalTimeAsync();
     }
     
     public bool CanBeRefuzata(System.Guid id)
