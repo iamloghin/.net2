@@ -3,8 +3,10 @@
     using System;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Media;
 
+    using CarService.WPF.Common;
     using CarService.WPF.Pages;
 
     /// <summary>
@@ -15,6 +17,13 @@
         public MainWindow()
         {
             InitializeComponent();
+            CustomInitialization();
+        }
+
+        private void CustomInitialization()
+        {
+            CommonItem.SetFrame(ref _mainPanelFrame);
+            CommonItem.SetTextBox(ref _pageName);
         }
 
         private void ShutdownButtonClick(object sender, RoutedEventArgs e)
@@ -24,13 +33,15 @@
 
         private void DashBoardButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainPanelFrame.Source = new Uri($"/Pages/DashboardPage.xaml", UriKind.Relative);
+            Page dashboardPage = new Dashboard();
+            _mainPanelFrame.NavigationService.Navigate(dashboardPage);
             _pageName.Text = "DASHBOARD";
         }
 
         private void NewClientButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainPanelFrame.Source = new Uri($"/Pages/NewClientPage.xaml", UriKind.Relative);
+            Page newClientPage = new NewClientPage();
+            _mainPanelFrame.NavigationService.Navigate(newClientPage);
             _pageName.Text = "ADD NEW CLIENT";
         }
         private void ClientButton_OnClick(object sender, RoutedEventArgs e)

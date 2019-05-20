@@ -15,14 +15,34 @@ using System.Windows.Shapes;
 
 namespace CarService.WPF.Pages
 {
+    using CarService.WPF.Common;
+
     /// <summary>
     /// Interaction logic for NewClientPage.xaml
     /// </summary>
-    public partial class NewClientForm : Page
+    public partial class NewClientPage : Page
     {
-        public NewClientForm()
+        public NewClientPage()
         {
             InitializeComponent();
+        }
+
+        private void AddClientButtonClick(object sender, RoutedEventArgs e)
+        {
+            var newClient = new Client()
+            {
+                Adresa = _nameFirstTextBox.Text,
+                Email = _nameFirstTextBox.Text,
+                Judet = _countryBox.Text,
+                Localitate = _localityBox.Text,
+                Nume = _nameFirstTextBox.Text,
+                Prenume = _nameLastTextBox.Text,
+                Telefon = _phoneBox.Text
+            };
+
+            Page newAutoPage = new NewAutoPage(newClient);
+            CommonItem.GetFrame().NavigationService.Navigate(newAutoPage);
+            CommonItem.GetTextBox().Text = "ADD NEW CLIENT";
         }
     }
 }
