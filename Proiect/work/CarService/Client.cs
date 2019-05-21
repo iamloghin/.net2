@@ -21,10 +21,15 @@ namespace CarService
             this.Id = Guid.NewGuid();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client(Guid id)
         {
             this.Id = id;
+        }
+
+        [OnDeserializing]
+        private void SetValuesOnDeserializing(StreamingContext context)
+        {
+            this.Id = Guid.NewGuid();
         }
 
         [DataMember]

@@ -10,6 +10,7 @@
 
 namespace CarService
 {
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
     
     
@@ -424,7 +425,7 @@ namespace CarService
         
         private System.Guid IdField;
         
-        private CarService.Imagine[] ImaginesField;
+        private List<Imagine> ImaginesField;
         
         private CarService.Material[] MaterialsField;
         
@@ -471,7 +472,7 @@ namespace CarService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public CarService.Imagine[] Imagines
+        public List<Imagine> Imagines
         {
             get
             {

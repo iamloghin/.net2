@@ -2,7 +2,6 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:Common="clr-namespace:CarService.WPF.Common"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
       TextElement.FontSize="13"
@@ -10,7 +9,7 @@
       TextOptions.TextRenderingMode="Auto"
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}">
-  <Grid Grid.Column="1" Grid.Row="1" Background="#E1E2E1">
+  <Grid Background="#E1E2E1">
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="*"/>
@@ -58,8 +57,7 @@
             <Grid Grid.Column="1" Margin='5 0 10 0'>
               <TextBox x:Name="_nameFirstTextBox" TabIndex="0"
                        MaterialDesign:HintAssist.Hint="Name"
-                       Text="{Binding StatusText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-              </TextBox>
+                       MaxLength="15"/>
             </Grid>
           </Grid>
           <Grid Row="2" Column="2">
@@ -69,9 +67,9 @@
             </Grid.ColumnDefinitions>
             <MaterialDesign:PackIcon Margin='0 20 0 0'  Grid.Column="0" Kind="Account" IsTabStop="False"/>
             <Grid Grid.Column="1" Margin='5 0 10 0'>
-              <TextBox x:Name="_nameLastTextBox"
-                         TabIndex="1"
-                         MaterialDesign:HintAssist.Hint="Prenume">
+              <TextBox Name="_nameLastTextBox" TabIndex="1"
+                       MaxLength="15"
+                       MaterialDesign:HintAssist.Hint="Prenume">
               </TextBox>
             </Grid>
           </Grid>
@@ -83,6 +81,7 @@
             <MaterialDesign:PackIcon Margin='0 20 0 0'  Grid.Column="0" Kind="Map" IsTabStop="False"/>
             <Grid Grid.Column="1" Margin='5 0 10 0'>
               <TextBox x:Name="_localityBox"
+                       MaxLength="20"
                          TabIndex="2"
                          MaterialDesign:HintAssist.Hint="Localitate">
               </TextBox>
@@ -96,6 +95,7 @@
             <MaterialDesign:PackIcon Margin='0 20 0 0'  Grid.Column="0" Kind="Map" IsTabStop="False"/>
             <Grid Grid.Column="1" Margin='5 0 10 0'>
               <TextBox x:Name="_countryBox"
+                       MaxLength="20"
                          TabIndex="3"
                          MaterialDesign:HintAssist.Hint="Judet">
               </TextBox>
@@ -108,14 +108,12 @@
             </Grid.ColumnDefinitions>
             <MaterialDesign:PackIcon Margin='0 20 0 0'  Grid.Column="0" Kind="Phone" IsTabStop="False"/>
             <Grid Grid.Column="1" Margin='5 0 10 0'>
-              <TextBox x:Name="_phoneBox"
-                         TabIndex="4"
-                         MaterialDesign:TransitionAssist.DisableTransitions="True"
-                         MaterialDesign:HintAssist.Hint="Telefon">
-                <TextBox.Text>
-                  <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"></Binding>
-                </TextBox.Text>
-              </TextBox>
+              <TextBox Name="_phoneBox"
+                       MaxLength="10"
+                       TabIndex="4"
+                       MaterialDesign:TransitionAssist.DisableTransitions="True"
+                       MaterialDesign:HintAssist.Hint="Telefon"
+                       PreviewTextInput="NumberValidationTextBox"/>
             </Grid>
           </Grid>
           <Grid Row="4" Column="2">
@@ -125,14 +123,11 @@
             </Grid.ColumnDefinitions>
             <MaterialDesign:PackIcon Margin='0 20 0 0'  Grid.Column="0" Kind="Email" IsTabStop="False"/>
             <Grid Grid.Column="1" Margin='5 0 10 0'>
-              <TextBox x:Name="_emailBox"
-                         TabIndex="5"
-                         MaterialDesign:TransitionAssist.DisableTransitions="True"
-                         MaterialDesign:HintAssist.Hint="Email">
-                <TextBox.Text>
-                  <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"></Binding>
-                </TextBox.Text>
-              </TextBox>
+              <TextBox Name="_emailBox"
+                       MaxLength="50"
+                       TabIndex="5"
+                       MaterialDesign:TransitionAssist.DisableTransitions="True"
+                       MaterialDesign:HintAssist.Hint="Email"/>
             </Grid>
           </Grid>
           <Grid Row="6" Column="1" Grid.ColumnSpan="2">

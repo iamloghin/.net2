@@ -38,7 +38,7 @@ namespace CarService.WPF.Pages
             InitializeComponent();
         }
 
-        private void BackButton_OnClick(object sender, RoutedEventArgs e)
+        private void BackButtonClick(object sender, RoutedEventArgs e)
         {
             CommonItem.GetFrame().NavigationService.Navigate(CommonItem.PageInstent.OfType<NewClientPage>().First());
             CommonItem.GetTextBox().Text = "ADD NEW CLIENT";
@@ -61,6 +61,7 @@ namespace CarService.WPF.Pages
             {
                 var newSasiu = new Sasiu()
                                    {
+                                       Id = Guid.NewGuid(),
                                        CodSasiu = _codNumberTextBox.Text,
                                        Denumire = _nameNumberTextBox.Text
                                    };
@@ -70,6 +71,7 @@ namespace CarService.WPF.Pages
 
                 _auto = new Auto()
                             {
+                                Id = Guid.NewGuid(),
                                 Client = _client,
                                 NumarAuto = _autoNumberTextBox.Text,
                                 Sasiu = newSasiu,

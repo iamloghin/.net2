@@ -1,92 +1,16 @@
-Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 1 items from Autos.
-Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 4 items from Clienti.
-Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/14/2019 4:31:32 PM -- Deleted 1 items from Sasiuri.
-Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 1 items from Autos.
-Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 4 items from Clienti.
-Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/14/2019 5:34:47 PM -- Deleted 1 items from Sasiuri.
-Error::Logger::5/15/2019 9:55:38 AM
+Error::Logger::5/21/2019 2:45:01 PM
 Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (logalex96@gmail.com).
 The statement has been terminated.
 _______________________________
-Error::Logger::5/15/2019 9:55:38 AM
-Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (vali2019@gmail.com).
-The statement has been terminated.
-_______________________________
-Info::Logger: 5/15/2019 9:55:38 AM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/15/2019 9:55:38 AM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/15/2019 9:55:38 AM -- Deleted 1 items from Autos.
-Info::Logger: 5/15/2019 9:55:38 AM -- Deleted 4 items from Clienti.
-Info::Logger: 5/15/2019 9:55:38 AM -- Deleted 10 items from Mecanici.
-Info::Logger: 5/15/2019 9:55:38 AM -- Deleted 1 items from Sasiuri.
-Info::Logger: 5/15/2019 9:55:45 AM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/15/2019 9:55:45 AM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/15/2019 9:55:45 AM -- Deleted 1 items from Autos.
-Info::Logger: 5/15/2019 9:55:45 AM -- Deleted 4 items from Clienti.
-Info::Logger: 5/15/2019 9:55:45 AM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/15/2019 9:55:45 AM -- Deleted 1 items from Sasiuri.
-Error::Logger::5/17/2019 10:33:57 AM
-Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (logalex96@gmail.com).
-The statement has been terminated.
-_______________________________
-Error::Logger::5/17/2019 10:33:57 AM
-Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (vali2019@gmail.com).
-The statement has been terminated.
-_______________________________
-Info::Logger: 5/17/2019 10:33:57 AM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/17/2019 10:33:57 AM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/17/2019 10:33:57 AM -- Deleted 1 items from Autos.
-Info::Logger: 5/17/2019 10:33:57 AM -- Deleted 4 items from Clienti.
-Info::Logger: 5/17/2019 10:33:57 AM -- Deleted 10 items from Mecanici.
-Info::Logger: 5/17/2019 10:33:57 AM -- Deleted 1 items from Sasiuri.
-Info::Logger: 5/17/2019 10:34:05 AM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/17/2019 10:34:05 AM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/17/2019 10:34:05 AM -- Deleted 1 items from Autos.
-Info::Logger: 5/17/2019 10:34:05 AM -- Deleted 4 items from Clienti.
-Info::Logger: 5/17/2019 10:34:05 AM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/17/2019 10:34:05 AM -- Deleted 1 items from Sasiuri.
-Info::Logger: 5/17/2019 10:34:13 AM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/17/2019 10:34:13 AM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/17/2019 10:34:13 AM -- Deleted 1 items from Autos.
-Info::Logger: 5/17/2019 10:34:13 AM -- Deleted 4 items from Clienti.
-Info::Logger: 5/17/2019 10:34:13 AM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/17/2019 10:34:13 AM -- Deleted 1 items from Sasiuri.
-Info::Logger: 5/17/2019 4:54:20 PM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/17/2019 4:54:20 PM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/17/2019 4:54:20 PM -- Deleted 1 items from Autos.
-Info::Logger: 5/17/2019 4:54:20 PM -- Deleted 4 items from Clienti.
-Info::Logger: 5/17/2019 4:54:20 PM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/17/2019 4:54:20 PM -- Deleted 1 items from Sasiuri.
-Error::Logger::5/17/2019 4:54:52 PM
-Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (vali2019@gmail.com).
-The statement has been terminated.
-_______________________________
-Error::Logger::5/17/2019 4:54:53 PM
-Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (logalex96@gmail.com).
-The statement has been terminated.
-_______________________________
-Error::Logger::5/20/2019 5:56:14 PM
-Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (logalex96@gmail.com).
-The statement has been terminated.
-_______________________________
-Error::Logger::5/20/2019 5:56:14 PM
-Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (vali2019@gmail.com).
-The statement has been terminated.
-_______________________________
-Info::Logger: 5/20/2019 5:56:14 PM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/20/2019 5:56:14 PM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/20/2019 5:56:14 PM -- Deleted 1 items from Autos.
-Info::Logger: 5/20/2019 5:56:14 PM -- Deleted 4 items from Clienti.
-Info::Logger: 5/20/2019 5:56:14 PM -- Deleted 15 items from Mecanici.
-Info::Logger: 5/20/2019 5:56:14 PM -- Deleted 1 items from Sasiuri.
-Info::Logger: 5/20/2019 5:56:49 PM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/20/2019 5:56:49 PM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/20/2019 5:56:49 PM -- Deleted 1 items from Autos.
-Info::Logger: 5/20/2019 5:56:49 PM -- Deleted 4 items from Clienti.
-Info::Logger: 5/20/2019 5:56:49 PM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/20/2019 5:56:49 PM -- Deleted 1 items from Sasiuri.
+Info::Logger: 5/21/2019 2:45:01 PM -- Deleted 1 items from DetaliiComanda.
+Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 1 items from Comenzi.
+Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 1 items from Autos.
+Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 4 items from Clienti.
+Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 5 items from Mecanici.
+Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 1 items from Sasiuri.
+Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 1 items from DetaliiComanda.
+Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 1 items from Comenzi.
+Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 1 items from Autos.
+Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 4 items from Clienti.
+Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 5 items from Mecanici.
+Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 1 items from Sasiuri.

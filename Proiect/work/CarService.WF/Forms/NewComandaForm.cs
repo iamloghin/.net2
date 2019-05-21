@@ -45,7 +45,6 @@ namespace CarService.WF.Forms
         {
             try
             {
-                var imageCounter = 0;
                 var kmBoard = 0;
                 var imagesList = new List<Imagine>();
 
@@ -65,7 +64,6 @@ namespace CarService.WF.Forms
                     KmBoard = kmBoard
                 };
 
-                
                 foreach (var image in _imaginesList)
                 {
                     var img = FromFile(image.Path);
@@ -79,10 +77,7 @@ namespace CarService.WF.Forms
                         Foto = imageStream.ToArray(),
                         Titlu = image.Titlu
                     });
-
-                    imageCounter++;
                 }
-                
 
                 _detaliuComanda = new DetaliuComanda()
                 {

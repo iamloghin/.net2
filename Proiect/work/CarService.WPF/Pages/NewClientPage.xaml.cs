@@ -17,6 +17,7 @@ namespace CarService.WPF.Pages
 {
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
+    using System.Text.RegularExpressions;
 
     using CarService.Common.Logger;
     using CarService.Common.Logger.Enum;
@@ -46,6 +47,7 @@ namespace CarService.WPF.Pages
         {
             var newClient = new Client()
             {
+                Id = Guid.NewGuid(),
                 Adresa = _fullAddressBox.Text,
                 Email = _emailBox.Text,
                 Judet = _countryBox.Text,
@@ -61,6 +63,12 @@ namespace CarService.WPF.Pages
             }
             CommonItem.GetFrame().NavigationService.Navigate(CommonItem.PageInstent.OfType<NewAutoPage>().First());
             CommonItem.GetTextBox().Text = "ADD NEW AUTO";
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

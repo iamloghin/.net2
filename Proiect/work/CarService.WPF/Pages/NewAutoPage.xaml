@@ -10,7 +10,7 @@
       TextOptions.TextRenderingMode="Auto"
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}">
-  <Grid Grid.Column="1" Grid.Row="1" Background="#E1E2E1">
+  <Grid Background="#E1E2E1">
     <Frame Name='_mainPanelFrame' NavigationUIVisibility="Hidden"/>
     <Grid>
       <Grid.RowDefinitions>
@@ -62,12 +62,10 @@
             </Grid.RowDefinitions>
             <MaterialDesign:Chip IsTabStop="False">Numar Auto</MaterialDesign:Chip>
             <Grid Grid.Row="1" Margin='5 0 10 0'>
-              <TextBox TabIndex="0" x:Name="_autoNumberTextBox"
-                         MaterialDesign:HintAssist.Hint="Numar auto">
-                <TextBox.Text>
-                  <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"></Binding>
-                </TextBox.Text>
-              </TextBox>
+              <TextBox TabIndex="0"
+                       Name="_autoNumberTextBox"
+                       MaxLength="10"
+                       MaterialDesign:HintAssist.Hint="Numar auto"/>
             </Grid>
           </Grid>
           <Grid Row="5" Column="1" Grid.ColumnSpan="2">
@@ -85,25 +83,17 @@
                   <ColumnDefinition Width="5" />
                   <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBox TabIndex="2" Grid.Column="0" x:Name="_serialNumberTextLeft" MaxLength="6" TextAlignment="Center">
-                  <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"></Binding>
-                  </TextBox.Text>
-                </TextBox>
+                <TextBox TabIndex="2" Grid.Column="0" x:Name="_serialNumberTextLeft" MaxLength="6" TextAlignment="Center"/>
                 <TextBox AcceptsTab="False" Grid.Column="2" x:Name="_serialNumberTextCenter" IsReadOnly="True" Background='#FFE4E4E4' TextAlignment="Center" BorderBrush='#FFE4E4E4'>
                   <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"></Binding>
+                    <Binding ElementName="_codNumberTextBox" Path="Text" UpdateSourceTrigger="PropertyChanged"></Binding>
                   </TextBox.Text>
                 </TextBox>
-                <TextBox TabIndex="2" Grid.Column="4" x:Name="_serialNumberTextRight" MaxLength="17" TextAlignment="Center">
-                  <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"></Binding>
-                  </TextBox.Text>
-                </TextBox>
+                <TextBox TabIndex="2" Grid.Column="4" x:Name="_serialNumberTextRight" MaxLength="17" TextAlignment="Center"/>
               </Grid>
             </Grid>
           </Grid>
-          <Grid Row="4" Column="4" RowSpan="5">
+          <Grid Row="4" Column="4" RowSpan="2">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="55"/>
               <ColumnDefinition Width="30"/>
@@ -128,11 +118,7 @@
                   <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
                 <MaterialDesign:Chip Grid.Column="0" IsTabStop="False">Cod</MaterialDesign:Chip>
-                <TextBox TabIndex="3" Grid.Column="2" x:Name="_codNumberTextBox" TextAlignment="Center" MaxLength="2">
-                  <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"></Binding>
-                  </TextBox.Text>
-                </TextBox>
+                <TextBox TabIndex="3" Grid.Column="2" x:Name="_codNumberTextBox" TextAlignment="Center" MaxLength="2"/>
               </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="2">
@@ -144,18 +130,14 @@
                   <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
                 <MaterialDesign:Chip Grid.Column="0" IsTabStop="False">Denumire</MaterialDesign:Chip>
-                <TextBox TabIndex="4" Grid.Column="2" x:Name="_nameNumberTextBox" TextAlignment="Center" MaxLength="25">
-                  <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"></Binding>
-                  </TextBox.Text>
-                </TextBox>
+                <TextBox TabIndex="4" Grid.Column="2" Name="_nameNumberTextBox" TextAlignment="Center" MaxLength="25"/>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
       <Grid Grid.Column="1" Grid.Row="2" Margin="0 0 20 0">
-        <Button Name="_backButton" Style="{DynamicResource MaterialDesignRaisedLightButton}"  Margin="10" Click="BackButton_OnClick">
+        <Button Name="_backButton" Style="{DynamicResource MaterialDesignRaisedLightButton}"  Margin="10" Click="BackButtonClick">
           <TextBlock HorizontalAlignment="Center" Text="Back" />
         </Button>
       </Grid>
