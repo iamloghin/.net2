@@ -65,10 +65,14 @@
             _pageName.Text = "MANAGER VIEW";
         }
 
-        // protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        // {
-        //     base.OnMouseLeftButtonDown(e);
-        //     this.DragMove();
-        // }
+        private void TopNavBarMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void MinimizeButtonClick(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.MinimizeWindow(this);
+        }
     }
 }

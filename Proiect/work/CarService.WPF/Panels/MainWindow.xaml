@@ -47,8 +47,13 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
     <!-- Top Nav Bar -->
-    <Grid x:Name="_topNavBar" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Background="#0069c0">
+    <Grid x:Name="_topNavBar" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Background="#0069c0" MouseDown='TopNavBarMouseDown'>
       <TextBlock Text="Service Auto" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="#FFFFFF" FontSize="20"/>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 5 40 0">
+        <Button x:Name="_minimizeButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="MinimizeButtonClick" Margin='0,2,0,0' VerticalAlignment='Top'>
+          <MaterialDesign:PackIcon Kind="WindowMinimize"/>
+        </Button>
+      </StackPanel>
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
         <Button x:Name="_shutdownButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ShutdownButtonClick" Margin='0,2,0,0' VerticalAlignment='Top'>
           <MaterialDesign:PackIcon Kind="Power"/>
