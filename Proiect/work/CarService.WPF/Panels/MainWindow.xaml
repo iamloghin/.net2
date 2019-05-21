@@ -4,7 +4,6 @@
         xmlns:D="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:Mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         Mc:Ignorable="D" Height="600" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -83,7 +82,11 @@
         </Button>
       </StackPanel>
     </Grid>
+
     <!-- Center Main Panel -->
     <Frame Name='_mainPanelFrame' Grid.Column="1" Grid.Row="1" Source="/Pages/DashboardPage.xaml" NavigationUIVisibility="Hidden"/>
+
+    <!-- Delete Me -->
+
   </Grid>
 </Window>
