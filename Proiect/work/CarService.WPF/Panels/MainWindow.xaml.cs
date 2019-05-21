@@ -42,26 +42,20 @@
 
         private void NewClientButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (!CommonItem.PageInstent.OfType<NewClientPage>().Any())
-            {
-                CommonItem.PageInstent.Add(new NewClientPage());
-            }
-            _mainPanelFrame.NavigationService.Navigate(CommonItem.PageInstent.OfType<NewClientPage>().First());
+            CommonItem.PageInstent.Clear();
+            _mainPanelFrame.NavigationService.Navigate(new NewClientPage());
             _pageName.Text = "ADD NEW CLIENT";
         }
         private void ClientButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (!CommonItem.PageInstent.OfType<ClientPage>().Any())
-            {
-                CommonItem.PageInstent.Add(new ClientPage());
-            }
-            _mainPanelFrame.NavigationService.Navigate(CommonItem.PageInstent.OfType<ClientPage>().First());
+            CommonItem.PageInstent.Clear();
+            _mainPanelFrame.NavigationService.Navigate(new ClientPage());
             _pageName.Text = "CLIENT VIEW";
         }
         private void ManagerButton_OnClick(object sender, RoutedEventArgs e)
         {
-            CommonItem.PageInstent.Add(new ManagerPage());
-            _mainPanelFrame.NavigationService.Navigate(CommonItem.PageInstent.LastOrDefault());
+            CommonItem.PageInstent.Clear();
+            _mainPanelFrame.NavigationService.Navigate(new ManagerPage());
             _pageName.Text = "MANAGER VIEW";
         }
 
