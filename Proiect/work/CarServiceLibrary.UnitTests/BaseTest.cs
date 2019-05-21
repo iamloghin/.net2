@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using CarService;
     using CarService.Service;
@@ -12,6 +13,14 @@
     public class BaseTest
     {
         AutoService _autoService;
+        private static readonly Random Random = new Random();
+
+        public static string RandomString(int length, bool numbers = false)
+        {
+            var chars = numbers ? "0123456789" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[Random.Next(s.Length)]).ToArray());
+        }
 
         [TestInitialize]
         public void TestInitialize()
@@ -24,12 +33,12 @@
         {
             _autoService.DeleteAllEntitiesOnTable("DetaliuComandaMaterial");
             _autoService.DeleteAllEntitiesOnTable("Imagini");
+            _autoService.DeleteAllEntitiesOnTable("Operatii");
             _autoService.DeleteAllEntitiesOnTable("DetaliiComanda");
             _autoService.DeleteAllEntitiesOnTable("Comenzi");
             _autoService.DeleteAllEntitiesOnTable("Autos");
             _autoService.DeleteAllEntitiesOnTable("Clienti");
             _autoService.DeleteAllEntitiesOnTable("Materiale");
-            _autoService.DeleteAllEntitiesOnTable("Operatii");
             _autoService.DeleteAllEntitiesOnTable("Mecanici");
             _autoService.DeleteAllEntitiesOnTable("Sasiuri");
         }
@@ -42,12 +51,12 @@
                 var newClient = new Client()
                 {
                     Adresa = "Decebal 4",
-                    Email = "logalex96@gmail.com",
+                    Email = RandomString(15),
                     Judet = "Neamt",
                     Localitate = "Targu Neamt",
                     Nume = "Loghin",
                     Prenume = "Alexandru",
-                    Telefon = "0747295142"
+                    Telefon = RandomString(10, true)
                 };
 
                 var newSasiu = new Sasiu()
@@ -62,7 +71,7 @@
                 var newAuto = new Auto()
                 {
                     Client = newClient,
-                    NumarAuto = "000FHSA123",
+                    NumarAuto = RandomString(10),
                     Sasiu = newSasiu,
                     SerieSasiu = serieSasiu
                 };
@@ -71,15 +80,29 @@
                 {
                     Auto = newAuto,
                     Client = newAuto.Client,
-                    DataProgramare = DateTime.Now.AddDays(7),
+                    DataProgramare = DateTime.Now.AddDays(Random.Next(1, 20)),
+                    DataFinalizare = DateTime.Now.AddDays(Random.Next(20, 40)),
                     DataSystem = DateTime.Now,
                     Descriere = "Reparat motor",
-                    StareComanda = StareComanda.InAsteptare
+                    StareComanda = (StareComanda)Enum.ToObject(typeof(StareComanda), Random.Next(1, 4))
                 };
 
                 var newDetaliuComanda = new DetaliuComanda()
                 {
-                    Comanda = comanda
+                    Comanda = comanda,
+                    Operaties = new List<Operatie>()
+                                    {
+                                        new Operatie()
+                                            {
+                                                Denumire = RandomString(10),
+                                                TimpExecutie = 12
+                                            },
+                                        new Operatie()
+                                            {
+                                                Denumire = RandomString(10),
+                                                TimpExecutie = 43
+                                            }
+                                    }
                 };
 
                 var response = _autoService.CreateDetaliuComanda(newDetaliuComanda);
@@ -96,39 +119,20 @@
         [TestMethod]
         public void CreateClientsList()
         {
-            var clientsList = new List<Client>()
+            var clientsList = new List<Client>();
+            int noClients = 10;
+            while (noClients-- > 0)
             {
-                new Client()
-                {
-                    Adresa = "Stefan Cel Mare 2",
-                    Email = "vali2019@gmail.com",
-                    Judet = "Neamt",
-                    Localitate = "Targu Neamt",
-                    Nume = "Stefanache",
-                    Prenume = "Vali",
-                    Telefon = "1111111111"
-                },
-                new Client()
-                {
-                    Adresa = "Decebal 1",
-                    Email = "alexloghin29@gmail.com",
-                    Judet = "Iasi",
-                    Localitate = "Iasi",
-                    Nume = "Amara",
-                    Prenume = "Tudor",
-                    Telefon = "0747292312"
-                },
-                new Client()
-                {
-                    Adresa = "Steliache",
-                    Email = "asdasd@gmail.com",
-                    Judet = "Bacau",
-                    Localitate = "Bacau",
-                    Nume = "Stefan",
-                    Prenume = "Strugari",
-                    Telefon = "0742222312"
-                }
-            };
+                clientsList.Add(new Client() {
+                            Adresa = RandomString(30),
+                            Email = RandomString(15),
+                            Judet = RandomString(10),
+                            Localitate = RandomString(10),
+                            Nume = RandomString(10),
+                            Prenume = RandomString(10),
+                            Telefon = RandomString(10, true)
+                        });
+            }
 
             foreach (var client in clientsList)
             {
@@ -140,35 +144,15 @@
         [TestMethod]
         public void CreateMecanicsList()
         {
-            var mecanicsList = new List<Mecanic>()
+            var mecanicsList = new List<Mecanic>();
+            int noMecanics = 20;
+            while (noMecanics-- > 0)
             {
-                new Mecanic
-                {
-                    Nume = "Amara",
-                    Prenume = "Gill"
-                },
-                new Mecanic
-                {
-                    Nume = "Underwood",
-                    Prenume = "Haney"
-                },
-                new Mecanic
-                {
-                    Nume = "Bradley",
-                    Prenume = "Woodward"
-                },
-                new Mecanic
-                {
-                    Nume = "Zavala",
-                    Prenume = "Hood"
-                },
-                new Mecanic
-                {
-                    Nume = "Leon",
-                    Prenume = "Pruitt"
-                }
-            };
-
+                mecanicsList.Add(new Mecanic() {
+                                     Nume = RandomString(10),
+                                     Prenume = RandomString(10)
+                                 });
+            }
             foreach (var mecanic in mecanicsList)
             {
                 var test = _autoService.CreateMecanic(mecanic);

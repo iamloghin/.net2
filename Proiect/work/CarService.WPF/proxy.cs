@@ -881,8 +881,6 @@ namespace CarService
         
         private string DenumireField;
         
-        private CarService.DetaliuComanda DetaliuComandaField;
-        
         private System.Guid IdField;
         
         private System.Nullable<decimal> TimpExecutieField;
@@ -909,19 +907,6 @@ namespace CarService
             set
             {
                 this.DenumireField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public CarService.DetaliuComanda DetaliuComanda
-        {
-            get
-            {
-                return this.DetaliuComandaField;
-            }
-            set
-            {
-                this.DetaliuComandaField = value;
             }
         }
         

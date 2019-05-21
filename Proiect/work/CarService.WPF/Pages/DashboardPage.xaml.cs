@@ -14,7 +14,7 @@ namespace CarService.WPF.Pages
         public Dashboard()
         {
             InitializeComponent();
-            //DashBoardInit();
+            DashBoardInit();
         }
 
         public void DashBoardInit()

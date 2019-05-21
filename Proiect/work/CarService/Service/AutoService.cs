@@ -40,7 +40,6 @@
         private IReadClientRepository _clientRead;
         private IReadComandaRepository _comandaRead;
         private IReadDetaliuComandaRepository _detaliuComandaRead;
-        private IReadImagineRepository _imagineRead;
         private IReadMaterialRepository _materialRead;
         private IReadMecanicRepository _mecanicRead;
         private IReadOperatieRepository _operatieRead;
@@ -608,7 +607,7 @@
             try
             {
                 _comandaRead = new ReadComandaRepository(context);
-                return _comandaRead.GetAll().Where(comanda => comanda.DataFinalizare.HasValue).ToList();
+                return _comandaRead.GetAll().Where(comanda => comanda.StareComanda == StareComanda.Executata).ToList();
             }
             catch (Exception e)
             {
@@ -637,7 +636,7 @@
             {
                 _operatieRead = new ReadOperatieRepository(context);
                 var response = _operatieRead.GetAll().Where(operatie => operatie.TimpExecutie.HasValue).ToList();
-                return int.Parse(response.Sum(operatie => operatie.TimpExecutie.Value).ToString(CultureInfo.InvariantCulture));
+                return Decimal.ToInt32((decimal)response.Sum(operatie => operatie.TimpExecutie));
             }
             catch (Exception e)
             {
