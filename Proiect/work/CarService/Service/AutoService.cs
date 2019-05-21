@@ -65,8 +65,16 @@
             var count = context.Database.SqlQuery<int>($"SELECT COUNT(*) FROM [{databaseName}].[dbo].[{tableName}]");
             if (count.Any() && count.First() > 0)
             {
-                Logger.Log.Handle(LogLevel.Info, $"Deleted {count.First()} items from {tableName}");
-                context.Database.ExecuteSqlCommand($"DELETE FROM {tableName}");
+                try
+                {
+                    context.Database.ExecuteSqlCommand($"DELETE FROM {tableName}");
+                    Logger.Log.Handle(LogLevel.Info, $"Deleted {count.First()} items from {tableName}");
+                }
+                catch (Exception e)
+                {
+                    var message = DbEntityCustomException.BuildMessageExceptions(e);
+                    throw new DbEntityCustomException(message);
+                }
             }
         }
 
@@ -278,6 +286,10 @@
                 _detaliuComandaWrite = new WriteDetaliuComandaRepository(context);
 
                 _operatieWrite.Create(operatie);
+                if (detaliuComanda.Operaties == null)
+                {
+                    detaliuComanda.Operaties = new List<Operatie>();
+                }
                 detaliuComanda.Operaties.Add(operatie);
                 _detaliuComandaWrite.Update(detaliuComanda);
 

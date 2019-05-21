@@ -26,6 +26,8 @@ namespace CarService
         {
             this.Id = id;
         }
+
+        [DataMember]
         public System.Guid Id { get; set; }
 
         [DataMember]

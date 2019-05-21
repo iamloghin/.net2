@@ -13,7 +13,7 @@ namespace CarService
     using System.Runtime.Serialization;
 
     [DataContract(IsReference = true)]
-    public sealed partial class Sasiu
+    public partial class Sasiu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sasiu()

@@ -13,7 +13,7 @@ namespace CarService
     using System.Runtime.Serialization;
 
     [DataContract(IsReference = true)]
-    public sealed partial class Client
+    public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
@@ -26,11 +26,6 @@ namespace CarService
             this.Id = id;
         }
 
-        [OnDeserializing]
-        private void SetValuesOnDeserializing(StreamingContext context)
-        {
-            this.Id = Guid.NewGuid();
-        }
 
         [DataMember]
         public System.Guid Id { get; set; }

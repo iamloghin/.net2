@@ -23,13 +23,13 @@
         public void TestCleanup()
         {
             _autoService.DeleteAllEntitiesOnTable("DetaliuComandaMaterial");
+            _autoService.DeleteAllEntitiesOnTable("Imagini");
             _autoService.DeleteAllEntitiesOnTable("DetaliiComanda");
             _autoService.DeleteAllEntitiesOnTable("Comenzi");
             _autoService.DeleteAllEntitiesOnTable("Autos");
             _autoService.DeleteAllEntitiesOnTable("Clienti");
             _autoService.DeleteAllEntitiesOnTable("Materiale");
             _autoService.DeleteAllEntitiesOnTable("Operatii");
-            _autoService.DeleteAllEntitiesOnTable("Imagini");
             _autoService.DeleteAllEntitiesOnTable("Mecanici");
             _autoService.DeleteAllEntitiesOnTable("Sasiuri");
         }

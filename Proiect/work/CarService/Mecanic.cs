@@ -13,7 +13,7 @@ namespace CarService
     using System.Runtime.Serialization;
 
     [DataContract(IsReference = true)]
-    public sealed partial class Mecanic
+    public partial class Mecanic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Mecanic()

@@ -95,6 +95,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\CommonItem.cs" />
     <Compile Include="Common\NotEmptyValidationRule.cs" />
+    <Compile Include="Common\SelectableViewModel.cs" />
     <Compile Include="Common\ZoomBorder.cs" />
     <Compile Include="Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
@@ -119,6 +120,7 @@
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="proxy.cs" />
+    <Compile Include="ViewModels\DisplayMecanic.cs" />
     <Page Include="Pages\ClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -4,9 +4,156 @@
       xmlns:Mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:D="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:Common="clr-namespace:CarService.WPF.Common"
       Mc:Ignorable="D"
       D:DesignHeight="450" D:DesignWidth="800"
       Title="NewOperatiePage">
+  <Grid Background="#E1E2E1">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="200"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="60"/>
+        <RowDefinition Height="20"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
 
+      <!-- Panel1 -->
+      <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan='3' Margin='0,10,10,0'>
+        <Rectangle Margin="20" Fill="#c5cae9" RadiusY="10" RadiusX="10">
+          <Rectangle.Effect>
+            <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+          </Rectangle.Effect>
+        </Rectangle>
+        <Grid Margin="20">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="155" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+          </Grid.RowDefinitions>
+        </Grid>
+      </Grid>
 
+      <!-- Panel2 -->
+      <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan='3'>
+        <Rectangle Margin="20 0 20 0" Fill="White" RadiusY="10" RadiusX="10">
+          <Rectangle.Effect>
+            <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+          </Rectangle.Effect>
+        </Rectangle>
+        <Grid Margin="20 0 20 0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="155" />
+            <ColumnDefinition Width="155" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+          </Grid.RowDefinitions>
+          <MaterialDesign:PackIcon Grid.Row="1" Grid.Column="1" Kind="Worker" Margin="0 10 0 0" IsTabStop="False"/>
+          <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                     Margin="25 0 0 0"
+                     Style="{StaticResource MaterialDesignHeadlineTextBlock}">
+            Add Operations</TextBlock>
+          <Grid Row="3" Column="1" ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="20" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <MaterialDesign:PackIcon Margin='0 10 0 0'  Grid.Column="0" Kind="DeveloperBoard" IsTabStop="False"/>
+            <Grid Grid.Column="1" Margin='10 0 10 0'>
+              <TextBox x:Name="_addOperationTextBox"
+                       TabIndex="2"
+                       MaterialDesign:HintAssist.Hint="Descriere Operatie"></TextBox>
+            </Grid>
+          </Grid>
+          <Grid Row="5" Column="1" ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="20" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <MaterialDesign:PackIcon Margin='0 10 0 0'  Grid.Column="0" Kind="Timer" IsTabStop="False"/>
+            <Grid Grid.Column="1" Margin='10 0 10 0' Width="90" HorizontalAlignment="Left">
+              <TextBox x:Name="_addTimeTextBox"
+                       TabIndex="2"
+                       TextAlignment="Center"
+                       MaterialDesign:HintAssist.Hint="Timp Executie"></TextBox>
+            </Grid>
+          </Grid>
+          <Grid Row="7" Column="1" ColumnSpan="2">
+            <Button
+              Click="AddOperationButtonClick"
+              Style="{StaticResource MaterialDesignRaisedAccentButton}"
+              ToolTip="Add operation to the command">
+              <TextBlock
+                Text="Add Operatie" />
+            </Button>
+          </Grid>
+          <Grid Row="1" RowSpan="5" Column="4">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="25"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" IsReadOnly="True" IsEnabled="False">Selectati mecanici disponibili</TextBox>
+            <Grid Grid.Row="1">
+              <ListBox ItemsSource="{Binding Mecanics}" Name="_mechanicsListBox">
+                <ListBox.ItemTemplate>
+                  <DataTemplate>
+                    <CheckBox IsChecked="{Binding IsChecked}" Content="{Binding Path=Item.FullName}" />
+                  </DataTemplate>
+                </ListBox.ItemTemplate>
+              </ListBox>
+            </Grid>
+          </Grid>
+          <Grid Row="6" RowSpan="5" Column="4">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="25"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" IsReadOnly="True" IsEnabled="False">Operatii introduse</TextBox>
+            <ListView Grid.Row="1" Name="_operationsListBox" ItemsSource="{Binding Operations}">
+              <ListView.ItemTemplate>
+                <DataTemplate>
+                  <WrapPanel>
+                    <TextBlock Text="Denumire: " />
+                    <TextBlock Text="{Binding Path=Item.Denumire}" FontWeight="Bold" />
+                    <TextBlock Text=" - " />
+                    <TextBlock Text="TimpExecutie: " />
+                    <TextBlock Text="{Binding Path=Item.TimpExecutie}" FontWeight="Bold" />
+                    <TextBlock Text=" m" />
+                  </WrapPanel>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+            </ListView>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <!-- Buttons -->
+      <Grid Grid.Column="2" Grid.Row="2" Margin="0 0 20 0">
+        <Button Name="_addClientButton" Click="AddComandaButtonClick" Style="{DynamicResource MaterialDesignRaisedAccentButton}"  Margin="10">
+          <TextBlock HorizontalAlignment="Center" Text="Complete the new order" />
+        </Button>
+      </Grid>
+    </Grid>
+  </Grid>
 </Page>

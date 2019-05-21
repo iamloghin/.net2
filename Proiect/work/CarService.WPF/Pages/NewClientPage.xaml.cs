@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CarService.WPF.Pages
 {
@@ -19,8 +10,6 @@ namespace CarService.WPF.Pages
     using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
 
-    using CarService.Common.Logger;
-    using CarService.Common.Logger.Enum;
     using CarService.WPF.Annotations;
     using CarService.WPF.Common;
 

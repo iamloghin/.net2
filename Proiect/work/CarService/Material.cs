@@ -13,7 +13,7 @@ namespace CarService
     using System.Runtime.Serialization;
 
     [DataContract(IsReference = true)]
-    public sealed partial class Material
+    public partial class Material
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Material()

@@ -29,7 +29,8 @@
             {
                 var exceptionTree = exception;
 
-                while (exceptionTree != null && exceptionTree.Message.Contains("See the inner exception"))
+                while ((exceptionTree != null && exceptionTree.Message.Contains("See the inner exception"))
+                        || (exceptionTree.InnerException != null && exceptionTree.InnerException.Message.Contains("See the inner exception")))
                 {
                     exceptionTree = exceptionTree.InnerException;
                 }

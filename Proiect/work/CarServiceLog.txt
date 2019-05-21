@@ -1,16 +1,3 @@
-Error::Logger::5/21/2019 2:45:01 PM
-Violation of UNIQUE KEY constraint 'UQ__Clienti__A9D10534D9F9FFFE'. Cannot insert duplicate key in object 'dbo.Clienti'. The duplicate key value is (logalex96@gmail.com).
-The statement has been terminated.
+Error::Logger::5/22/2019 1:30:09 AM
+Entities in 'CarServiceModelContainer.Operatii' participate in the 'DetaliuComandaOperatie' relationship. 0 related 'DetaliuComanda' were found. 1 'DetaliuComanda' is expected.
 _______________________________
-Info::Logger: 5/21/2019 2:45:01 PM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 1 items from Autos.
-Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 4 items from Clienti.
-Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/21/2019 2:45:02 PM -- Deleted 1 items from Sasiuri.
-Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 1 items from DetaliiComanda.
-Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 1 items from Comenzi.
-Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 1 items from Autos.
-Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 4 items from Clienti.
-Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 5 items from Mecanici.
-Info::Logger: 5/21/2019 2:45:19 PM -- Deleted 1 items from Sasiuri.

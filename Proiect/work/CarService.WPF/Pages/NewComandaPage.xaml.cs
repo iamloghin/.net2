@@ -1,22 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CarService.WPF.Pages
 {
     using System.IO;
-    using System.Windows.Forms;
 
     using CarService.WPF.Common;
 
@@ -54,6 +45,7 @@ namespace CarService.WPF.Pages
         {
             BuildComanda();
 
+            // remove comment
             using (var autoApi = new AutoServiceClient())
             {
                 try
@@ -73,7 +65,7 @@ namespace CarService.WPF.Pages
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show("Something is wrong...");
+                    MessageBox.Show(exception.ToString());
                 }
             }
         }
@@ -81,6 +73,8 @@ namespace CarService.WPF.Pages
         private void AddCommandButtonClick(object sender, RoutedEventArgs e)
         {
             BuildComanda();
+
+            // remove comment
             using (var autoApi = new AutoServiceClient())
             {
                 try
@@ -93,7 +87,7 @@ namespace CarService.WPF.Pages
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show("Something is wrong...");
+                    MessageBox.Show(exception.ToString());
                 }
             }
         }
@@ -121,6 +115,7 @@ namespace CarService.WPF.Pages
 
                 var comanda = new Comanda()
                                   {
+                                      Id = Guid.NewGuid(),
                                       Auto = _auto,
                                       Client = _auto.Client,
                                       DataProgramare = _programDatePicker.DisplayDate.Date,
@@ -176,7 +171,7 @@ namespace CarService.WPF.Pages
             if ((bool)_openedFileDialog.ShowDialog())
             {
                 var fileInfo = new FileInfo(_openedFileDialog.FileName);
-                _imageTitleBox.Text = fileInfo.Name.Split('.').First();
+                _imageTitleBox.Text = fileInfo.Name.Split('.').First().Substring(0, 20);
                 return;
             }
 

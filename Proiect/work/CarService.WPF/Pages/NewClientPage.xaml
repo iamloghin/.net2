@@ -95,7 +95,7 @@
             <MaterialDesign:PackIcon Margin='0 20 0 0'  Grid.Column="0" Kind="Map" IsTabStop="False"/>
             <Grid Grid.Column="1" Margin='5 0 10 0'>
               <TextBox x:Name="_countryBox"
-                       MaxLength="20"
+                       MaxLength="10"
                          TabIndex="3"
                          MaterialDesign:HintAssist.Hint="Judet">
               </TextBox>
@@ -150,6 +150,7 @@
                          AcceptsReturn="True"
                          VerticalScrollBarVisibility="Auto"
                          SpellCheck.IsEnabled="True"
+                         MaxLength="50"
                          TabIndex="6"
                          MaterialDesign:HintAssist.Hint="Marysville, Washington(WA), 98270" Grid.ColumnSpan='2'></TextBox>
             </Grid>

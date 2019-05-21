@@ -10,7 +10,6 @@
 
 namespace CarService
 {
-    using System.Collections.Generic;
     using System.Runtime.Serialization;
     
     
@@ -425,13 +424,13 @@ namespace CarService
         
         private System.Guid IdField;
         
-        private List<Imagine> ImaginesField;
+        private System.Collections.Generic.ICollection<CarService.Imagine> ImaginesField;
         
-        private CarService.Material[] MaterialsField;
+        private System.Collections.Generic.ICollection<CarService.Material> MaterialsField;
         
-        private CarService.Mecanic[] MecaniciField;
+        private System.Collections.Generic.ICollection<CarService.Mecanic> MecaniciField;
         
-        private CarService.Operatie[] OperatiesField;
+        private System.Collections.Generic.ICollection<CarService.Operatie> OperatiesField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
@@ -472,7 +471,7 @@ namespace CarService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public List<Imagine> Imagines
+        public System.Collections.Generic.ICollection<CarService.Imagine> Imagines
         {
             get
             {
@@ -485,7 +484,7 @@ namespace CarService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public CarService.Material[] Materials
+        public System.Collections.Generic.ICollection<CarService.Material> Materials
         {
             get
             {
@@ -498,7 +497,7 @@ namespace CarService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public CarService.Mecanic[] Mecanici
+        public System.Collections.Generic.ICollection<CarService.Mecanic> Mecanici
         {
             get
             {
@@ -511,7 +510,7 @@ namespace CarService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public CarService.Operatie[] Operaties
+        public System.Collections.Generic.ICollection<CarService.Operatie> Operaties
         {
             get
             {
@@ -543,6 +542,8 @@ namespace CarService
         private System.DateTime DataSystemField;
         
         private string DescriereField;
+        
+        private System.Guid IdField;
         
         private System.Nullable<int> KmBoardField;
         
@@ -637,6 +638,19 @@ namespace CarService
             set
             {
                 this.DescriereField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Id
+        {
+            get
+            {
+                return this.IdField;
+            }
+            set
+            {
+                this.IdField = value;
             }
         }
         
@@ -867,6 +881,8 @@ namespace CarService
         
         private string DenumireField;
         
+        private CarService.DetaliuComanda DetaliuComandaField;
+        
         private System.Guid IdField;
         
         private System.Nullable<decimal> TimpExecutieField;
@@ -893,6 +909,19 @@ namespace CarService
             set
             {
                 this.DenumireField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CarService.DetaliuComanda DetaliuComanda
+        {
+            get
+            {
+                return this.DetaliuComandaField;
+            }
+            set
+            {
+                this.DetaliuComandaField = value;
             }
         }
         
@@ -1000,10 +1029,10 @@ public interface IAutoService
     System.Threading.Tasks.Task<bool> AddOperatieAsync(CarService.Operatie operatieId, CarService.DetaliuComanda detaliuComanda);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/AddMecanics", ReplyAction="http://tempuri.org/IAutoService/AddMecanicsResponse")]
-    bool AddMecanics(CarService.Mecanic[] selectedMecanics, CarService.DetaliuComanda detaliuComanda);
+    bool AddMecanics(System.Collections.Generic.ICollection<CarService.Mecanic> selectedMecanics, CarService.DetaliuComanda detaliuComanda);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/AddMecanics", ReplyAction="http://tempuri.org/IAutoService/AddMecanicsResponse")]
-    System.Threading.Tasks.Task<bool> AddMecanicsAsync(CarService.Mecanic[] selectedMecanics, CarService.DetaliuComanda detaliuComanda);
+    System.Threading.Tasks.Task<bool> AddMecanicsAsync(System.Collections.Generic.ICollection<CarService.Mecanic> selectedMecanics, CarService.DetaliuComanda detaliuComanda);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/UpdateClient", ReplyAction="http://tempuri.org/IAutoService/UpdateClientResponse")]
     bool UpdateClient(CarService.Client client);
@@ -1048,58 +1077,58 @@ public interface IAutoService
     System.Threading.Tasks.Task<CarService.Client> GetClientAsync(string searchClientString);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetClientAutos", ReplyAction="http://tempuri.org/IAutoService/GetClientAutosResponse")]
-    CarService.Auto[] GetClientAutos(System.Guid Id);
+    System.Collections.Generic.ICollection<CarService.Auto> GetClientAutos(System.Guid Id);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetClientAutos", ReplyAction="http://tempuri.org/IAutoService/GetClientAutosResponse")]
-    System.Threading.Tasks.Task<CarService.Auto[]> GetClientAutosAsync(System.Guid Id);
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Auto>> GetClientAutosAsync(System.Guid Id);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllDetaliuComandas", ReplyAction="http://tempuri.org/IAutoService/GetAllDetaliuComandasResponse")]
-    CarService.DetaliuComanda[] GetAllDetaliuComandas();
+    System.Collections.Generic.ICollection<CarService.DetaliuComanda> GetAllDetaliuComandas();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllDetaliuComandas", ReplyAction="http://tempuri.org/IAutoService/GetAllDetaliuComandasResponse")]
-    System.Threading.Tasks.Task<CarService.DetaliuComanda[]> GetAllDetaliuComandasAsync();
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.DetaliuComanda>> GetAllDetaliuComandasAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllMaterials", ReplyAction="http://tempuri.org/IAutoService/GetAllMaterialsResponse")]
-    CarService.Material[] GetAllMaterials();
+    System.Collections.Generic.ICollection<CarService.Material> GetAllMaterials();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllMaterials", ReplyAction="http://tempuri.org/IAutoService/GetAllMaterialsResponse")]
-    System.Threading.Tasks.Task<CarService.Material[]> GetAllMaterialsAsync();
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Material>> GetAllMaterialsAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAvailabelMecanics", ReplyAction="http://tempuri.org/IAutoService/GetAvailabelMecanicsResponse")]
-    CarService.Mecanic[] GetAvailabelMecanics();
+    System.Collections.Generic.ICollection<CarService.Mecanic> GetAvailabelMecanics();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAvailabelMecanics", ReplyAction="http://tempuri.org/IAutoService/GetAvailabelMecanicsResponse")]
-    System.Threading.Tasks.Task<CarService.Mecanic[]> GetAvailabelMecanicsAsync();
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Mecanic>> GetAvailabelMecanicsAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAvailabelMaterials", ReplyAction="http://tempuri.org/IAutoService/GetAvailabelMaterialsResponse")]
-    CarService.Material[] GetAvailabelMaterials();
+    System.Collections.Generic.ICollection<CarService.Material> GetAvailabelMaterials();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAvailabelMaterials", ReplyAction="http://tempuri.org/IAutoService/GetAvailabelMaterialsResponse")]
-    System.Threading.Tasks.Task<CarService.Material[]> GetAvailabelMaterialsAsync();
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Material>> GetAvailabelMaterialsAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllMecanics", ReplyAction="http://tempuri.org/IAutoService/GetAllMecanicsResponse")]
-    CarService.Mecanic[] GetAllMecanics();
+    System.Collections.Generic.ICollection<CarService.Mecanic> GetAllMecanics();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllMecanics", ReplyAction="http://tempuri.org/IAutoService/GetAllMecanicsResponse")]
-    System.Threading.Tasks.Task<CarService.Mecanic[]> GetAllMecanicsAsync();
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Mecanic>> GetAllMecanicsAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllOrders", ReplyAction="http://tempuri.org/IAutoService/GetAllOrdersResponse")]
-    CarService.Comanda[] GetAllOrders();
+    System.Collections.Generic.ICollection<CarService.Comanda> GetAllOrders();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllOrders", ReplyAction="http://tempuri.org/IAutoService/GetAllOrdersResponse")]
-    System.Threading.Tasks.Task<CarService.Comanda[]> GetAllOrdersAsync();
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Comanda>> GetAllOrdersAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllDoneOrders", ReplyAction="http://tempuri.org/IAutoService/GetAllDoneOrdersResponse")]
-    CarService.Comanda[] GetAllDoneOrders();
+    System.Collections.Generic.ICollection<CarService.Comanda> GetAllDoneOrders();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllDoneOrders", ReplyAction="http://tempuri.org/IAutoService/GetAllDoneOrdersResponse")]
-    System.Threading.Tasks.Task<CarService.Comanda[]> GetAllDoneOrdersAsync();
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Comanda>> GetAllDoneOrdersAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllOperations", ReplyAction="http://tempuri.org/IAutoService/GetAllOperationsResponse")]
-    CarService.Operatie[] GetAllOperations();
+    System.Collections.Generic.ICollection<CarService.Operatie> GetAllOperations();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetAllOperations", ReplyAction="http://tempuri.org/IAutoService/GetAllOperationsResponse")]
-    System.Threading.Tasks.Task<CarService.Operatie[]> GetAllOperationsAsync();
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Operatie>> GetAllOperationsAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetOperationsTotalTime", ReplyAction="http://tempuri.org/IAutoService/GetOperationsTotalTimeResponse")]
     int GetOperationsTotalTime();
@@ -1126,10 +1155,10 @@ public interface IAutoService
     System.Threading.Tasks.Task<bool> ComandaAddMaterialAsync(System.Guid materialId, System.Guid detaliuComandaId);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetProgramareClientsList", ReplyAction="http://tempuri.org/IAutoService/GetProgramareClientsListResponse")]
-    CarService.Client[] GetProgramareClientsList(System.DateTime dataProgramare);
+    System.Collections.Generic.ICollection<CarService.Client> GetProgramareClientsList(System.DateTime dataProgramare);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoService/GetProgramareClientsList", ReplyAction="http://tempuri.org/IAutoService/GetProgramareClientsListResponse")]
-    System.Threading.Tasks.Task<CarService.Client[]> GetProgramareClientsListAsync(System.DateTime dataProgramare);
+    System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Client>> GetProgramareClientsListAsync(System.DateTime dataProgramare);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1256,12 +1285,12 @@ public partial class AutoServiceClient : System.ServiceModel.ClientBase<IAutoSer
         return base.Channel.AddOperatieAsync(operatieId, detaliuComanda);
     }
     
-    public bool AddMecanics(CarService.Mecanic[] selectedMecanics, CarService.DetaliuComanda detaliuComanda)
+    public bool AddMecanics(System.Collections.Generic.ICollection<CarService.Mecanic> selectedMecanics, CarService.DetaliuComanda detaliuComanda)
     {
         return base.Channel.AddMecanics(selectedMecanics, detaliuComanda);
     }
     
-    public System.Threading.Tasks.Task<bool> AddMecanicsAsync(CarService.Mecanic[] selectedMecanics, CarService.DetaliuComanda detaliuComanda)
+    public System.Threading.Tasks.Task<bool> AddMecanicsAsync(System.Collections.Generic.ICollection<CarService.Mecanic> selectedMecanics, CarService.DetaliuComanda detaliuComanda)
     {
         return base.Channel.AddMecanicsAsync(selectedMecanics, detaliuComanda);
     }
@@ -1336,92 +1365,92 @@ public partial class AutoServiceClient : System.ServiceModel.ClientBase<IAutoSer
         return base.Channel.GetClientAsync(searchClientString);
     }
     
-    public CarService.Auto[] GetClientAutos(System.Guid Id)
+    public System.Collections.Generic.ICollection<CarService.Auto> GetClientAutos(System.Guid Id)
     {
         return base.Channel.GetClientAutos(Id);
     }
     
-    public System.Threading.Tasks.Task<CarService.Auto[]> GetClientAutosAsync(System.Guid Id)
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Auto>> GetClientAutosAsync(System.Guid Id)
     {
         return base.Channel.GetClientAutosAsync(Id);
     }
     
-    public CarService.DetaliuComanda[] GetAllDetaliuComandas()
+    public System.Collections.Generic.ICollection<CarService.DetaliuComanda> GetAllDetaliuComandas()
     {
         return base.Channel.GetAllDetaliuComandas();
     }
     
-    public System.Threading.Tasks.Task<CarService.DetaliuComanda[]> GetAllDetaliuComandasAsync()
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.DetaliuComanda>> GetAllDetaliuComandasAsync()
     {
         return base.Channel.GetAllDetaliuComandasAsync();
     }
     
-    public CarService.Material[] GetAllMaterials()
+    public System.Collections.Generic.ICollection<CarService.Material> GetAllMaterials()
     {
         return base.Channel.GetAllMaterials();
     }
     
-    public System.Threading.Tasks.Task<CarService.Material[]> GetAllMaterialsAsync()
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Material>> GetAllMaterialsAsync()
     {
         return base.Channel.GetAllMaterialsAsync();
     }
     
-    public CarService.Mecanic[] GetAvailabelMecanics()
+    public System.Collections.Generic.ICollection<CarService.Mecanic> GetAvailabelMecanics()
     {
         return base.Channel.GetAvailabelMecanics();
     }
     
-    public System.Threading.Tasks.Task<CarService.Mecanic[]> GetAvailabelMecanicsAsync()
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Mecanic>> GetAvailabelMecanicsAsync()
     {
         return base.Channel.GetAvailabelMecanicsAsync();
     }
     
-    public CarService.Material[] GetAvailabelMaterials()
+    public System.Collections.Generic.ICollection<CarService.Material> GetAvailabelMaterials()
     {
         return base.Channel.GetAvailabelMaterials();
     }
     
-    public System.Threading.Tasks.Task<CarService.Material[]> GetAvailabelMaterialsAsync()
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Material>> GetAvailabelMaterialsAsync()
     {
         return base.Channel.GetAvailabelMaterialsAsync();
     }
     
-    public CarService.Mecanic[] GetAllMecanics()
+    public System.Collections.Generic.ICollection<CarService.Mecanic> GetAllMecanics()
     {
         return base.Channel.GetAllMecanics();
     }
     
-    public System.Threading.Tasks.Task<CarService.Mecanic[]> GetAllMecanicsAsync()
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Mecanic>> GetAllMecanicsAsync()
     {
         return base.Channel.GetAllMecanicsAsync();
     }
     
-    public CarService.Comanda[] GetAllOrders()
+    public System.Collections.Generic.ICollection<CarService.Comanda> GetAllOrders()
     {
         return base.Channel.GetAllOrders();
     }
     
-    public System.Threading.Tasks.Task<CarService.Comanda[]> GetAllOrdersAsync()
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Comanda>> GetAllOrdersAsync()
     {
         return base.Channel.GetAllOrdersAsync();
     }
     
-    public CarService.Comanda[] GetAllDoneOrders()
+    public System.Collections.Generic.ICollection<CarService.Comanda> GetAllDoneOrders()
     {
         return base.Channel.GetAllDoneOrders();
     }
     
-    public System.Threading.Tasks.Task<CarService.Comanda[]> GetAllDoneOrdersAsync()
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Comanda>> GetAllDoneOrdersAsync()
     {
         return base.Channel.GetAllDoneOrdersAsync();
     }
     
-    public CarService.Operatie[] GetAllOperations()
+    public System.Collections.Generic.ICollection<CarService.Operatie> GetAllOperations()
     {
         return base.Channel.GetAllOperations();
     }
     
-    public System.Threading.Tasks.Task<CarService.Operatie[]> GetAllOperationsAsync()
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Operatie>> GetAllOperationsAsync()
     {
         return base.Channel.GetAllOperationsAsync();
     }
@@ -1466,12 +1495,12 @@ public partial class AutoServiceClient : System.ServiceModel.ClientBase<IAutoSer
         return base.Channel.ComandaAddMaterialAsync(materialId, detaliuComandaId);
     }
     
-    public CarService.Client[] GetProgramareClientsList(System.DateTime dataProgramare)
+    public System.Collections.Generic.ICollection<CarService.Client> GetProgramareClientsList(System.DateTime dataProgramare)
     {
         return base.Channel.GetProgramareClientsList(dataProgramare);
     }
     
-    public System.Threading.Tasks.Task<CarService.Client[]> GetProgramareClientsListAsync(System.DateTime dataProgramare)
+    public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CarService.Client>> GetProgramareClientsListAsync(System.DateTime dataProgramare)
     {
         return base.Channel.GetProgramareClientsListAsync(dataProgramare);
     }
