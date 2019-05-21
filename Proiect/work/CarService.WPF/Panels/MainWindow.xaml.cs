@@ -65,10 +65,10 @@
             _pageName.Text = "MANAGER VIEW";
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-            this.DragMove();
-        }
+        // protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        // {
+        //     base.OnMouseLeftButtonDown(e);
+        //     this.DragMove();
+        // }
     }
 }

@@ -95,6 +95,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\CommonItem.cs" />
     <Compile Include="Common\NotEmptyValidationRule.cs" />
+    <Compile Include="Common\ZoomBorder.cs" />
     <Compile Include="Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>

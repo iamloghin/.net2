@@ -203,6 +203,7 @@ namespace CarService.WPF.Pages
 
         private void AddImageListSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            _zoomBorder.Reset();
             _pictureBox.Source = new BitmapImage(new Uri(_imaginesList[_addImageList.SelectedIndex].Path));
         }
     }

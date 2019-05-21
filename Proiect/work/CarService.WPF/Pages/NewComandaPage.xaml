@@ -4,6 +4,7 @@
       xmlns:Mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:D="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:utils="clr-namespace:CarService.WPF.Common"
       Mc:Ignorable="D"
       D:DesignHeight="450" D:DesignWidth="800"
       Title="NewComandaPage">
@@ -162,9 +163,9 @@
             </ListBox>
           </Grid>
           <Grid Row="5" RowSpan="8" Column="4">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-              <Image Name="_pictureBox" Source="../Resources/imgs/new_client.jpg" />
-            </StackPanel>
+            <utils:ZoomBorder x:Name="_zoomBorder" ClipToBounds="True">
+              <Image Name="_pictureBox" Source=""/>
+            </utils:ZoomBorder>
           </Grid>
         </Grid>
       </Grid>
