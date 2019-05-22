@@ -1,9 +1,10 @@
-﻿using System.Data.Entity.Migrations;
-
-namespace CarService.Repository.Write.Material
+﻿namespace CarService.Repository.Write.Material
 {
     using System;
     using System.Linq;
+    using System.Data.Entity.Migrations;
+
+    using Material = CarService.Material;
 
     /// <inheritdoc />
     /// <summary>
@@ -23,17 +24,17 @@ namespace CarService.Repository.Write.Material
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified material.
         /// </summary>
         /// <param name="material">The material.</param>
-        public void Create(CarService.Material material)
+        public void Create(Material material)
         {
             _context.Materiale.Add(material);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Deletes the specified identifier.
@@ -45,7 +46,7 @@ namespace CarService.Repository.Write.Material
             _context.Materiale.Remove(material);
         }
 
-        public void Update(CarService.Material material)
+        public void Update(Material material)
         {
             _context.Materiale.AddOrUpdate(material);
         }
@@ -60,7 +61,7 @@ namespace CarService.Repository.Write.Material
         {
             return _context.Materiale.Any(m => m.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.
@@ -78,7 +79,7 @@ namespace CarService.Repository.Write.Material
         {
             _context.Materiale.First(m => m.Id == id).Cantitate = cantitate;
         }
-        
+
         /// <inheritdoc />
         /// <summary>Sets the pret.</summary>
         /// <param name="id">The identifier.</param>
@@ -87,7 +88,7 @@ namespace CarService.Repository.Write.Material
         {
             _context.Materiale.First(m => m.Id == id).Pret = pret;
         }
-        
+
         /// <inheritdoc />
         /// <summary>Sets the data aprovizionare.</summary>
         /// <param name="id">The identifier.</param>

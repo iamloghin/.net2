@@ -1,12 +1,14 @@
 ﻿namespace CarService.Repository.Write.Sasiu
 {
+    using Sasiu = CarService.Sasiu;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IWriteSasiuRepository
-    /// Implements the <see cref="!:Write.IWriteRepository{CarService.Sasiu}" />
+    /// Implements the <see cref="Sasiu" />
     /// </summary>
-    /// <seealso cref="!:Write.IWriteRepository{CarService.Sasiu}" />
-    internal interface IWriteSasiuRepository: IWriteRepository<CarService.Sasiu>
+    /// <seealso cref="Sasiu" />
+    internal interface IWriteSasiuRepository: IWriteRepository<Sasiu>
     {
     }
 }

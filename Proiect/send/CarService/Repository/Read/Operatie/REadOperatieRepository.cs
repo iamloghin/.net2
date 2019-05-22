@@ -1,16 +1,17 @@
-﻿using System;
-
-namespace CarService.Repository.Read.Operatie
+﻿namespace CarService.Repository.Read.Operatie
 {
-    using System.Collections.Generic;
+    using System;
     using System.Linq;
+    using System.Collections.Generic;
+
+    using Operatie = CarService.Operatie;
 
     /// <inheritdoc />
     /// <summary>
     /// Class ReadOperatieRepository.
-    /// Implements the <see cref="T:CarService.Repository.Read.Operatie.IReadOperatieRepository" />
+    /// Implements the <see cref="IReadOperatieRepository" />
     /// </summary>
-    /// <seealso cref="T:CarService.Repository.Read.Operatie.IReadOperatieRepository" />
+    /// <seealso cref="IReadOperatieRepository" />
     internal class ReadOperatieRepository: IReadOperatieRepository
     {
         private readonly CarServiceModelContainer _context;
@@ -23,7 +24,7 @@ namespace CarService.Repository.Read.Operatie
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the by identifier.
@@ -34,17 +35,17 @@ namespace CarService.Repository.Read.Operatie
         {
             return !Exists(id) ? null : _context.Operatii.FirstOrDefault(o => o.Id== id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets all.
         /// </summary>
         /// <returns>IReadOnlyList&lt;Operatii&gt;.</returns>
-        public IReadOnlyList<CarService.Operatie> GetAll()
+        public IReadOnlyList<Operatie> GetAll()
         {
             return _context.Operatii.ToList();
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Existses the specified identifier.
@@ -55,7 +56,7 @@ namespace CarService.Repository.Read.Operatie
         {
             return _context.Operatii.Any(o => o.Id== id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the denumire.

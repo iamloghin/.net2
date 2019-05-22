@@ -1,10 +1,8 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-using CarService;
-
-namespace CarService.Repository.Write.Client
+﻿namespace CarService.Repository.Write.Client
 {
     using System.Linq;
+    using System;
+    using System.Data.Entity.Migrations;
 
     /// <inheritdoc />
     /// <summary>
@@ -24,7 +22,7 @@ namespace CarService.Repository.Write.Client
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified client.
@@ -34,7 +32,7 @@ namespace CarService.Repository.Write.Client
         {
             _context.Clienti.Add(client);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Deletes the specified identifier.
@@ -45,7 +43,7 @@ namespace CarService.Repository.Write.Client
             var client = _context.Clienti.First(c => c.Id == id);
             _context.Clienti.Remove(client);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Existses the specified identifier.
@@ -56,7 +54,7 @@ namespace CarService.Repository.Write.Client
         {
             return _context.Clienti.Any(c => c.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.

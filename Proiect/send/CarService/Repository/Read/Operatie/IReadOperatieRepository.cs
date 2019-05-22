@@ -1,14 +1,16 @@
-﻿using System;
-
-namespace CarService.Repository.Read.Operatie
+﻿namespace CarService.Repository.Read.Operatie
 {
+    using System;
+
+    using Operatie = CarService.Operatie;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IReadOperatieRepository
-    /// Implements the <see cref="!:CarService.Repository.Read.IReadRepository{CarService.Operatie}" />
+    /// Implements the <see cref="Operatie" />
     /// </summary>
-    /// <seealso cref="!:CarService.Repository.Read.IReadRepository{CarService.Operatie}" />
-    internal interface IReadOperatieRepository: IReadRepository<CarService.Operatie>
+    /// <seealso cref="Operatie" />
+    internal interface IReadOperatieRepository: IReadRepository<Operatie>
     {
         /// <summary>
         /// Gets the denumire.

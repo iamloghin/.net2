@@ -1,16 +1,21 @@
-﻿using System;
-
-namespace CarService.Repository.Read.DetaliuComanda
+﻿namespace CarService.Repository.Read.DetaliuComanda
 {
+    using System;
     using System.Collections.Generic;
+
+    using DetaliuComanda = CarService.DetaliuComanda;
+    using Imagine = CarService.Imagine;
+    using Material = CarService.Material;
+    using Mecanic = CarService.Mecanic;
+    using Operatie = CarService.Operatie;
 
     /// <inheritdoc />
     /// <summary>
     /// Interface IReadDetaliuComandaRepository
-    /// Implements the <see cref="!:CarService.Repository.Read.IReadRepository{CarService.DetaliuComanda}" />
+    /// Implements the <see cref="DetaliuComanda" />
     /// </summary>
-    /// <seealso cref="!:CarService.Repository.Read.IReadRepository{CarService.DetaliuComanda}" />
-    internal interface IReadDetaliuComandaRepository: IReadRepository<CarService.DetaliuComanda>
+    /// <seealso cref="DetaliuComanda" />
+    internal interface IReadDetaliuComandaRepository: IReadRepository<DetaliuComanda>
     {
         /// <summary>
         /// Gets the comanda.
@@ -24,25 +29,25 @@ namespace CarService.Repository.Read.DetaliuComanda
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>ICollection&lt;CarService.Mecanic&gt;.</returns>
-        ICollection<CarService.Mecanic> GetMecanics(Guid id);
+        ICollection<Mecanic> GetMecanics(Guid id);
         /// <summary>
         /// Gets the materials.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>ICollection&lt;CarService.Material&gt;.</returns>
-        ICollection<CarService.Material> GetMaterials(Guid id);
+        ICollection<Material> GetMaterials(Guid id);
         /// <summary>
         /// Operatieses the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>ICollection&lt;CarService.Operatie&gt;.</returns>
-        ICollection<CarService.Operatie> Operaties(Guid id);
+        ICollection<Operatie> Operaties(Guid id);
 
         /// <summary>
         /// Imagineses the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>ICollection&lt;CarService.Imagine&gt;.</returns>
-        ICollection<CarService.Imagine> Imagines(Guid id);
+        ICollection<Imagine> Imagines(Guid id);
     }
 }

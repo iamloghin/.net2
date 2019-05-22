@@ -2,13 +2,15 @@
 {
     using System;
 
+    using Comanda = CarService.Comanda;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IReadComandaRepository
-    /// Implements the <see cref="!:CarService.Repository.Read.IReadRepository{CarService.Comanda}" />
+    /// Implements the <see cref="Comanda" />
     /// </summary>
-    /// <seealso cref="!:CarService.Repository.Read.IReadRepository{CarService.Comanda}" />
-    internal interface IReadComandaRepository: IReadRepository<CarService.Comanda>
+    /// <seealso cref="Comanda" />
+    internal interface IReadComandaRepository: IReadRepository<Comanda>
     {
         /// <summary>
         /// Gets the stare comanda.

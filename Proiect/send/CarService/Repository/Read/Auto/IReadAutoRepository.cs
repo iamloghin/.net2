@@ -3,13 +3,15 @@
     using System;
     using System.Collections.Generic;
 
+    using Auto = CarService.Auto;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IReadAutoRepository
-    /// Implements the <see cref="!:CarService.Repository.Read.IReadRepository{CarService.Auto}" />
+    /// Implements the <see cref="Auto" />
     /// </summary>
-    /// <seealso cref="!:CarService.Repository.Read.IReadRepository{CarService.Auto}" />
-    internal interface IReadAutoRepository : IReadRepository<CarService.Auto>
+    /// <seealso cref="Auto" />
+    internal interface IReadAutoRepository : IReadRepository<Auto>
     {
         /// <summary>
         /// Gets the numar automatic.
@@ -30,6 +32,6 @@
         /// </summary>
         /// <param name="id">The client identifier.</param>
         /// <returns>The auto Client</returns>
-        IList<CarService.Auto> GetAutoByClient(Guid id);
+        IList<Auto> GetAutoByClient(Guid id);
     }
 }
