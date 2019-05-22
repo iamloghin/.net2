@@ -45,28 +45,41 @@ namespace CarService.WPF.Pages
         {
             BuildComanda();
 
-            // remove comment
-            using (var autoApi = new AutoServiceClient())
+            if (!CommonItem.DemoApp)
             {
-                try
+                using (var autoApi = new AutoServiceClient())
                 {
-                    var response = autoApi.CreateDetaliuComanda(_detaliuComanda);
-
-                    if (!response) return;
-
-                    if (!CommonItem.PageInstent.OfType<NewOperatiePage>().Any())
+                    try
                     {
-                        CommonItem.PageInstent.Add(new NewOperatiePage(_detaliuComanda));
-                    }
+                        var response = autoApi.CreateDetaliuComanda(_detaliuComanda);
 
-                    CommonItem.GetFrame().NavigationService
-                        .Navigate(CommonItem.PageInstent.OfType<NewOperatiePage>().First());
-                    CommonItem.GetTextBox().Text = "ADD OPERATIONS";
+                        if (!response) return;
+
+                        if (!CommonItem.PageInstent.OfType<NewOperatiePage>().Any())
+                        {
+                            CommonItem.PageInstent.Add(new NewOperatiePage(_detaliuComanda));
+                        }
+
+                        CommonItem.GetFrame().NavigationService
+                            .Navigate(CommonItem.PageInstent.OfType<NewOperatiePage>().First());
+                        CommonItem.GetTextBox().Text = "ADD OPERATIONS";
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.ToString());
+                    }
                 }
-                catch (Exception exception)
+            }
+            else
+            {
+                if (!CommonItem.PageInstent.OfType<NewOperatiePage>().Any())
                 {
-                    MessageBox.Show(exception.ToString());
+                    CommonItem.PageInstent.Add(new NewOperatiePage(_detaliuComanda));
                 }
+
+                CommonItem.GetFrame().NavigationService
+                    .Navigate(CommonItem.PageInstent.OfType<NewOperatiePage>().First());
+                CommonItem.GetTextBox().Text = "ADD OPERATIONS";
             }
         }
 
@@ -74,21 +87,28 @@ namespace CarService.WPF.Pages
         {
             BuildComanda();
 
-            // remove comment
-            using (var autoApi = new AutoServiceClient())
+            if(!CommonItem.DemoApp)
             {
-                try
+                using (var autoApi = new AutoServiceClient())
                 {
-                    var response = autoApi.CreateDetaliuComanda(_detaliuComanda);
+                    try
+                    {
+                        var response = autoApi.CreateDetaliuComanda(_detaliuComanda);
 
-                    if (!response) return;
-                    CommonItem.PageInstent.Clear();
-                    CommonItem.GetFrame().NavigationService.Navigate(new Dashboard());
+                        if (!response) return;
+                        CommonItem.PageInstent.Clear();
+                        CommonItem.GetFrame().NavigationService.Navigate(new Dashboard());
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.ToString());
+                    }
                 }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.ToString());
-                }
+            }
+            else
+            {
+                CommonItem.PageInstent.Clear();
+                CommonItem.GetFrame().NavigationService.Navigate(new Dashboard());
             }
         }
 
@@ -171,7 +191,12 @@ namespace CarService.WPF.Pages
             if ((bool)_openedFileDialog.ShowDialog())
             {
                 var fileInfo = new FileInfo(_openedFileDialog.FileName);
-                _imageTitleBox.Text = fileInfo.Name.Split('.').First().Substring(0, 20);
+                var fileName = fileInfo.Name.Split('.').First();
+                if (fileName.Length > 20)
+                {
+                    fileName.Substring(0, 20);
+                }
+                _imageTitleBox.Text = fileName;
                 return;
             }
 

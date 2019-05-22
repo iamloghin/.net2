@@ -1,5 +1,7 @@
 ﻿namespace CarService.WPF
 {
+    using System;
+
     using CarService.WPF.Common;
     using CarService.WPF.Pages;
 
@@ -19,8 +21,23 @@
 
         private void CustomInitialization()
         {
-            CommonItem.SetFrame(ref _mainPanelFrame);
-            CommonItem.SetTextBox(ref _pageName);
+            try
+            {
+                using (var _autoApi = new AutoServiceClient())
+                {
+                    var checkConnection = _autoApi.GetAvailabelMecanics().Count;
+                }
+            }
+            catch (Exception e)
+            {
+                if (e.Message.Contains("no endpoint listening"))
+                {
+                    CommonItem.DemoApp = true;
+                    CommonItem.SetFrame(ref _mainPanelFrame);
+                    CommonItem.SetTextBox(ref _pageName);
+                    MessageBox.Show("Serviciul Host WCF nu raspunde, aplicatia ruleaza in modul DEMO.");
+                }
+            }
         }
 
         private void ShutdownButtonClick(object sender, RoutedEventArgs e)

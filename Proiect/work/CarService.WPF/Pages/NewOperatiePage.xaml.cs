@@ -42,19 +42,58 @@
         {
             var obsCollenctionTemp = new ObservableCollection<SelectableViewModel<DisplayMecanic>>();
 
-            using (var autoApi = new AutoServiceClient())
+            if (!CommonItem.DemoApp)
             {
-                _clientMecanics = autoApi.GetAvailabelMecanics();
-
-                foreach (var mecanic in _clientMecanics)
+                using (var autoApi = new AutoServiceClient())
                 {
-                    obsCollenctionTemp.Add(
-                        new SelectableViewModel<DisplayMecanic>
-                            {
-                                IsChecked = false,
-                                Item = new DisplayMecanic() { Id = mecanic.Id, FullName = $"{mecanic.Nume} {mecanic.Prenume}" }
-                            });
+                    _clientMecanics = autoApi.GetAvailabelMecanics();
+
+                    foreach (var mecanic in _clientMecanics)
+                    {
+                        obsCollenctionTemp.Add(
+                            new SelectableViewModel<DisplayMecanic>
+                                {
+                                    IsChecked = false,
+                                    Item = new DisplayMecanic()
+                                               {
+                                                   Id = mecanic.Id, FullName = $"{mecanic.Nume} {mecanic.Prenume}"
+                                               }
+                                });
+                    }
                 }
+            }
+            else
+            {
+                obsCollenctionTemp.Add(
+                    new SelectableViewModel<DisplayMecanic>
+                        {
+                            IsChecked = false,
+                            Item = new DisplayMecanic()
+                                       {
+                                           Id = Guid.NewGuid(),
+                                           FullName = "Janita Filice"
+                                        }
+                        });
+                obsCollenctionTemp.Add(
+                    new SelectableViewModel<DisplayMecanic>
+                        {
+                            IsChecked = false,
+                            Item = new DisplayMecanic()
+                                       {
+                                           Id = Guid.NewGuid(),
+                                           FullName = "Ronni Orman"
+                            }
+                        });
+                obsCollenctionTemp.Add(
+                    new SelectableViewModel<DisplayMecanic>
+                        {
+                            IsChecked = true,
+                            Item = new DisplayMecanic()
+                                       {
+                                           Id = Guid.NewGuid(),
+                                           FullName = "Devona Millet"
+                            }
+                        });
             }
 
             return obsCollenctionTemp;
@@ -76,21 +115,26 @@
                                    TimpExecutie = decimal.Parse(_addTimeTextBox.Text)
                                };
 
-            // remove comment
-            do
+            if (!CommonItem.DemoApp)
             {
-                using (var autoApi = new AutoServiceClient())
+                do
                 {
-                    var response = autoApi.AddOperatie(operatie, _detaliuComanda);
-                    if (response) break;
+                    using (var autoApi = new AutoServiceClient())
+                    {
+                        var response = autoApi.AddOperatie(operatie, _detaliuComanda);
+                        if (response) break;
 
-                    userResponse =
-                        MessageBox.Show(@"Ups.. change could not be done.  Try again ?", @"Something went wrong",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        userResponse = MessageBox.Show(
+                            @"Ups.. change could not be done.  Try again ?",
+                            @"Something went wrong",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Error);
 
-                    if (userResponse == DialogResult.No) break;
+                        if (userResponse == DialogResult.No) break;
+                    }
                 }
-            } while (userResponse == DialogResult.Yes);
+                while (userResponse == DialogResult.Yes);
+            }
 
             Operations.Add(
                 new SelectableViewModel<Operatie>
@@ -110,31 +154,36 @@
                 return;
             }
 
-            var selectedMecanics = new List<Mecanic>();
-
-            foreach (var mecanic in Mecanics)
+            if (!CommonItem.DemoApp)
             {
-                if (mecanic.IsChecked)
+                var selectedMecanics = new List<Mecanic>();
+
+                foreach (var mecanic in Mecanics)
                 {
-                    selectedMecanics.Add(_clientMecanics.First(x => x.Id.Equals(mecanic.Item.Id)));
+                    if (mecanic.IsChecked)
+                    {
+                        selectedMecanics.Add(_clientMecanics.First(x => x.Id.Equals(mecanic.Item.Id)));
+                    }
                 }
+
+                do
+                {
+                    using (var autoApi = new AutoServiceClient())
+                    {
+                        var response = autoApi.AddMecanics(selectedMecanics, _detaliuComanda);
+                        if (response) break;
+
+                        userResponse = MessageBox.Show(
+                            @"Ups.. change could not be done.  Try again ?",
+                            @"Something went wrong",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Error);
+
+                        if (userResponse == DialogResult.No) break;
+                    }
+                }
+                while (userResponse == DialogResult.Yes);
             }
-
-            // remove comment
-            do
-            {
-                using (var autoApi = new AutoServiceClient())
-                {
-                    var response = autoApi.AddMecanics(selectedMecanics, _detaliuComanda);
-                    if (response) break;
-
-                    userResponse =
-                        MessageBox.Show(@"Ups.. change could not be done.  Try again ?", @"Something went wrong",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                    if (userResponse == DialogResult.No) break;
-                }
-            } while (userResponse == DialogResult.Yes);
 
             CommonItem.PageInstent.Clear();
             CommonItem.GetFrame().NavigationService.Navigate(new Dashboard());

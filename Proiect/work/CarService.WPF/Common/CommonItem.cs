@@ -11,6 +11,8 @@
         private static TextBlock mainTextBlock = null;
         public static IList<Page> PageInstent = new List<Page>();
 
+        public static bool DemoApp = false;
+
         public static Frame SetFrame(ref Frame frame) => mainPanelFrame ?? (mainPanelFrame = frame);
         public static Frame GetFrame() => mainPanelFrame;
 

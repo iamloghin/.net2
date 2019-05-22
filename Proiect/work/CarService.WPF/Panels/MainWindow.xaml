@@ -90,9 +90,5 @@
 
     <!-- Center Main Panel -->
     <Frame Name='_mainPanelFrame' Grid.Column="1" Grid.Row="1" Source="/Pages/DashboardPage.xaml" NavigationUIVisibility="Hidden"/>
-
-    <!-- Delete Me -->
-
-    <!-- Delete me -->
   </Grid>
 </Window>

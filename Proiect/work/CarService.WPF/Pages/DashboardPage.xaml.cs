@@ -4,6 +4,9 @@ using System.Windows.Media;
 
 namespace CarService.WPF.Pages
 {
+    using System;
+    using System.Windows;
+
     using CarService.WPF.Common;
 
     /// <summary>
@@ -11,6 +14,8 @@ namespace CarService.WPF.Pages
     /// </summary>
     public partial class Dashboard : Page
     {
+        private AutoServiceClient _autoApi;
+
         public Dashboard()
         {
             InitializeComponent();
@@ -20,16 +25,22 @@ namespace CarService.WPF.Pages
         public void DashBoardInit()
         {
             this.FontFamily = new FontFamily("Champagne &amp; Limousines");
-            using (var autoApi = new AutoServiceClient())
+            if (!CommonItem.DemoApp)
             {
-                this._dashboardMecanicAvail.Text = autoApi.GetAvailabelMecanics().Count().ToString();
-                this._dashboardMecanicInfo.Text = $"Total of {autoApi.GetAllMecanics().Count().ToString()} mechanics";
+                using (_autoApi = new AutoServiceClient())
+                {
+                    this._dashboardMecanicAvail.Text = _autoApi.GetAvailabelMecanics().Count().ToString();
+                    this._dashboardMecanicInfo.Text =
+                        $"Total of {_autoApi.GetAllMecanics().Count().ToString()} mechanics";
 
-                this._dashboardComenzi.Text = autoApi.GetAllOrders().Count().ToString();
-                this._dashboardComenziInfo.Text = $"{autoApi.GetAllDoneOrders().Count().ToString()} orders completed";
+                    this._dashboardComenzi.Text = _autoApi.GetAllOrders().Count().ToString();
+                    this._dashboardComenziInfo.Text =
+                        $"{_autoApi.GetAllDoneOrders().Count().ToString()} orders completed";
 
-                this._dashboardOperatii.Text = autoApi.GetAllOperations().Count().ToString();
-                this._dashboardOperatiiInfo.Text = $"Total executing time is {autoApi.GetOperationsTotalTime().ToString()}";
+                    this._dashboardOperatii.Text = _autoApi.GetAllOperations().Count().ToString();
+                    this._dashboardOperatiiInfo.Text =
+                        $"Total executing time is {_autoApi.GetOperationsTotalTime().ToString()}";
+                }
             }
             CommonItem.GetTextBox().Text = "DASHBOARD";
         }

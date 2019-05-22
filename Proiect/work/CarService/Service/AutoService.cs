@@ -66,8 +66,9 @@
             {
                 try
                 {
+                    var setResponse = $"Deleted {count.First()} items from {tableName}";
                     context.Database.ExecuteSqlCommand($"DELETE FROM {tableName}");
-                    Logger.Log.Handle(LogLevel.Info, $"Deleted {count.First()} items from {tableName}");
+                    Logger.Log.Handle(LogLevel.Info, setResponse);
                 }
                 catch (Exception e)
                 {
