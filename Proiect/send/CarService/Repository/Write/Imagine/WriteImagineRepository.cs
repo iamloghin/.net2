@@ -1,9 +1,10 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-
-namespace CarService.Repository.Write.Imagine
+﻿namespace CarService.Repository.Write.Imagine
 {
+    using System;
     using System.Linq;
+    using System.Data.Entity.Migrations;
+
+    using Imagine = CarService.Imagine;
 
     /// <inheritdoc />
     /// <summary>
@@ -23,17 +24,17 @@ namespace CarService.Repository.Write.Imagine
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified imagine.
         /// </summary>
         /// <param name="imagine">The imagine.</param>
-        public void Create(CarService.Imagine imagine)
+        public void Create(Imagine imagine)
         {
             _context.Imagini.Add(imagine);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Deletes the specified identifier.
@@ -45,7 +46,7 @@ namespace CarService.Repository.Write.Imagine
             _context.Imagini.Remove(imagine);
         }
 
-        public void Update(CarService.Imagine imagine)
+        public void Update(Imagine imagine)
         {
             _context.Imagini.AddOrUpdate(imagine);
         }
@@ -60,7 +61,7 @@ namespace CarService.Repository.Write.Imagine
         {
             return _context.Imagini.Any(i => i.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.

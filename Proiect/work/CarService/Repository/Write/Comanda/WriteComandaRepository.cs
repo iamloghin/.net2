@@ -1,9 +1,10 @@
-﻿using System.Data.Entity.Migrations;
-
-namespace CarService.Repository.Write.Comanda
+﻿namespace CarService.Repository.Write.Comanda
 {
     using System;
     using System.Linq;
+    using System.Data.Entity.Migrations;
+
+    using Comanda = CarService.Comanda;
 
     /// <inheritdoc />
     /// <summary>
@@ -23,17 +24,17 @@ namespace CarService.Repository.Write.Comanda
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified comanda.
         /// </summary>
         /// <param name="comanda">The comanda.</param>
-        public void Create(CarService.Comanda comanda)
+        public void Create(Comanda comanda)
         {
             _context.Comenzi.Add(comanda);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Deletes the specified identifier.
@@ -45,7 +46,7 @@ namespace CarService.Repository.Write.Comanda
             _context.Comenzi.Remove(comanda);
         }
 
-        public void Update(CarService.Comanda comanda)
+        public void Update(Comanda comanda)
         {
             _context.Comenzi.AddOrUpdate(comanda);
         }
@@ -60,7 +61,7 @@ namespace CarService.Repository.Write.Comanda
         {
             return _context.Comenzi.Any(c => c.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.
@@ -78,7 +79,7 @@ namespace CarService.Repository.Write.Comanda
         {
             _context.Comenzi.First(c => c.Id == id).DataFinalizare = DateTime.Parse(dataFinalizare);
         }
-        
+
         /// <inheritdoc />
         /// <summary>Sets the stare comanda.</summary>
         /// <param name="id">The identifier.</param>
@@ -87,7 +88,7 @@ namespace CarService.Repository.Write.Comanda
         {
             _context.Comenzi.First(c => c.Id == id).StareComanda = stareComanda;
         }
-        
+
         /// <inheritdoc />
         /// <summary>Sets the descriere.</summary>
         /// <param name="id">The identifier.</param>

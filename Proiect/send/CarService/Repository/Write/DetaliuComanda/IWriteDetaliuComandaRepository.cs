@@ -1,12 +1,14 @@
 ﻿namespace CarService.Repository.Write.DetaliuComanda
 {
+    using DetaliuComanda = CarService.DetaliuComanda;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IWriteDetaliuComandaRepository
-    /// Implements the <see cref="!:Write.IWriteRepository{CarService.DetaliuComanda}" />
+    /// Implements the <see cref="DetaliuComanda" />
     /// </summary>
-    /// <seealso cref="!:Write.IWriteRepository{CarService.DetaliuComanda}" />
-    internal interface IWriteDetaliuComandaRepository: IWriteRepository<CarService.DetaliuComanda>
+    /// <seealso cref="DetaliuComanda" />
+    internal interface IWriteDetaliuComandaRepository: IWriteRepository<DetaliuComanda>
     {
     }
 }

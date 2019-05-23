@@ -1,8 +1,11 @@
-﻿using System;
-
-namespace CarService.Repository.Read.Material
+﻿namespace CarService.Repository.Read.Material
 {
-    internal interface IReadMaterialRepository: IReadRepository<CarService.Material>
+    using System;
+    using System.Collections.Generic;
+
+    using Material = CarService.Material;
+
+    internal interface IReadMaterialRepository: IReadRepository<Material>
     {
         /// <summary>
         /// Gets the denumire.
@@ -31,5 +34,11 @@ namespace CarService.Repository.Read.Material
         /// <param name="id">The identifier.</param>
         /// <returns>A date time that represents the data aprovizionare.</returns>
         DateTime GetDataAprovizionare(Guid id);
+
+        /// <summary>
+        /// Gets the available materials.
+        /// </summary>
+        /// <returns>A list of available materials.</returns>
+        IList<Material> GetAvailables();
     }
 }

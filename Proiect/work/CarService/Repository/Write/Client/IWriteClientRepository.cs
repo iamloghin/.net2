@@ -1,12 +1,14 @@
 ﻿namespace CarService.Repository.Write.Client
 {
+    using Client = CarService.Client;
+
     /// <inheritdoc />
     /// <summary>
-    /// Interface IWriteClientRepository
-    /// Implements the <see cref="!:CarService.Repository.Write.IWriteRepository{CarService.Client}" />
+    /// Interface IWriteAutoRepository
+    /// Implements the <see cref="Client" />
     /// </summary>
-    /// <seealso cref="!:CarService.Repository.Write.IWriteRepository{CarService.Client}" />
-    internal interface IWriteClientRepository: IWriteRepository<CarService.Client>
+    /// <seealso cref="Client" />
+    internal interface IWriteClientRepository: IWriteRepository<Client>
     {
     }
 }

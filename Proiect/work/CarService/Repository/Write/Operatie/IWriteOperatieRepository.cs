@@ -1,14 +1,15 @@
-﻿using System;
-
-namespace CarService.Repository.Write.Operatie
+﻿namespace CarService.Repository.Write.Operatie
 {
+    using System;
+    using Operatie = CarService.Operatie;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IWriteOperatieRepository
-    /// Implements the <see cref="!:CarService.Repository.Write.IWriteRepository{CarService.Operatie}" />
+    /// Implements the <see cref="Operatie" />
     /// </summary>
-    /// <seealso cref="!:CarService.Repository.Write.IWriteRepository{CarService.Operatie}" />
-    internal interface IWriteOperatieRepository: IWriteRepository<CarService.Operatie>
+    /// <seealso cref="Operatie" />
+    internal interface IWriteOperatieRepository: IWriteRepository<Operatie>
     {
         /// <summary>
         /// Sets the timp executie.

@@ -1,16 +1,17 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-
-namespace CarService.Repository.Write.Sasiu
+﻿namespace CarService.Repository.Write.Sasiu
 {
+    using System;
     using System.Linq;
+    using System.Data.Entity.Migrations;
+
+    using Sasiu = CarService.Sasiu;
 
     /// <inheritdoc />
     /// <summary>
     /// Class WriteSasiuRepository.
-    /// Implements the <see cref="T:CarService.Repository.Write.Sasiu.IWriteSasiuRepository" />
+    /// Implements the <see cref="IWriteSasiuRepository" />
     /// </summary>
-    /// <seealso cref="T:CarService.Repository.Write.Sasiu.IWriteSasiuRepository" />
+    /// <seealso cref="IWriteSasiuRepository" />
     internal class WriteSasiuRepository: IWriteSasiuRepository
     {
         private readonly CarServiceModelContainer _context;
@@ -23,13 +24,13 @@ namespace CarService.Repository.Write.Sasiu
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified sasiu.
         /// </summary>
         /// <param name="sasiu">The sasiu.</param>
-        public void Create(CarService.Sasiu sasiu)
+        public void Create(Sasiu sasiu)
         {
             _context.Sasiuri.Add(sasiu);
         }
@@ -45,7 +46,7 @@ namespace CarService.Repository.Write.Sasiu
             _context.Sasiuri.Remove(sasiu);
         }
 
-        public void Update(CarService.Sasiu sasiu)
+        public void Update(Sasiu sasiu)
         {
             _context.Sasiuri.AddOrUpdate(sasiu);
         }
@@ -60,7 +61,7 @@ namespace CarService.Repository.Write.Sasiu
         {
             return _context.Sasiuri.Any(s => s.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.

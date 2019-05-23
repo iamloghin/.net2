@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections;
-using CarService.Repository.Read.DetaliuComanda;
-
+﻿
 namespace CarService.Repository.Read.Mecanic
 {
-    using System.Collections.Generic;
+    using System;
     using System.Linq;
+    using System.Collections.Generic;
+
+    using Mecanic = CarService.Mecanic;
 
     /// <inheritdoc />
     /// <summary>
     /// Class ReadMecanicRepository.
-    /// Implements the <see cref="T:CarService.Repository.Read.Mecanic.IReadMecanicRepository" />
+    /// Implements the <see cref="IReadMecanicRepository" />
     /// </summary>
-    /// <seealso cref="T:CarService.Repository.Read.Mecanic.IReadMecanicRepository" />
+    /// <seealso cref="IReadMecanicRepository" />
     internal class ReadMecanicRepository: IReadMecanicRepository
     {
         private readonly CarServiceModelContainer _context;
@@ -32,21 +32,21 @@ namespace CarService.Repository.Read.Mecanic
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>Mecanic.</returns>
-        public CarService.Mecanic GetById(Guid id)
+        public Mecanic GetById(Guid id)
         {
             return !Exists(id) ? null : _context.Mecanici.FirstOrDefault(m => m.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets all.
         /// </summary>
         /// <returns>IReadOnlyList&lt;Mecanici&gt;.</returns>
-        public IReadOnlyList<CarService.Mecanic> GetAll()
+        public IReadOnlyList<Mecanic> GetAll()
         {
             return _context.Mecanici.ToList();
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Existses the specified identifier.
@@ -57,7 +57,7 @@ namespace CarService.Repository.Read.Mecanic
         {
             return _context.Mecanici.Any(m => m.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the nume.
@@ -68,7 +68,7 @@ namespace CarService.Repository.Read.Mecanic
         {
             return !Exists(id) ? null : _context.Mecanici.FirstOrDefault(m => m.Id == id)?.Nume;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the prenume.
@@ -80,13 +80,13 @@ namespace CarService.Repository.Read.Mecanic
             return !Exists(id) ? null : _context.Mecanici.FirstOrDefault(m => m.Id == id)?.Prenume;
         }
 
-        public List<CarService.Mecanic> GetAvailables()
+        public List<Mecanic> GetAvailables()
         {
             var allComands = _context.DetaliiComanda.ToList();
 
             var allMecanics = _context.Mecanici.ToList();
 
-            var availableMecanics = new List<CarService.Mecanic>();
+            var availableMecanics = new List<Mecanic>();
 
             foreach (var mecanic in allMecanics)
             {

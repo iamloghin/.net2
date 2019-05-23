@@ -1,16 +1,17 @@
-﻿using System;
-
-namespace CarService.Repository.Read.Sasiu
+﻿namespace CarService.Repository.Read.Sasiu
 {
-    using System.Collections.Generic;
+    using System;
     using System.Linq;
+    using System.Collections.Generic;
+
+    using Sasiu = CarService.Sasiu;
 
     /// <inheritdoc />
     /// <summary>
     /// Class ReadSasiuRepository.
-    /// Implements the <see cref="T:CarService.Repository.Read.Sasiu.IReadSasiuRepository" />
+    /// Implements the <see cref="IReadSasiuRepository" />
     /// </summary>
-    /// <seealso cref="T:CarService.Repository.Read.Sasiu.IReadSasiuRepository" />
+    /// <seealso cref="IReadSasiuRepository" />
     internal class ReadSasiuRepository: IReadSasiuRepository
     {
         private readonly CarServiceModelContainer _context;
@@ -23,7 +24,7 @@ namespace CarService.Repository.Read.Sasiu
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the by identifier.
@@ -40,7 +41,7 @@ namespace CarService.Repository.Read.Sasiu
         /// Gets all.
         /// </summary>
         /// <returns>IReadOnlyList&lt;Sasiuri&gt;.</returns>
-        public IReadOnlyList<CarService.Sasiu> GetAll()
+        public IReadOnlyList<Sasiu> GetAll()
         {
             return _context.Sasiuri.ToList();
         }
@@ -67,7 +68,7 @@ namespace CarService.Repository.Read.Sasiu
         {
             return !Exists(id) ? null : _context.Sasiuri.FirstOrDefault(s => s.Id == id)?.CodSasiu;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the denumire.

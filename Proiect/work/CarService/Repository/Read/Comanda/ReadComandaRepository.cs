@@ -6,12 +6,14 @@ namespace CarService.Repository.Read.Comanda
     using System.Collections.Generic;
     using System.Linq;
 
+    using Comanda = CarService.Comanda;
+
     /// <inheritdoc />
     /// <summary>
     /// Class ReadComandaRepository.
-    /// Implements the <see cref="T:CarService.Repository.Read.Comanda.IReadComandaRepository" />
+    /// Implements the <see cref="IReadComandaRepository" />
     /// </summary>
-    /// <seealso cref="T:CarService.Repository.Read.Comanda.IReadComandaRepository" />
+    /// <seealso cref="IReadComandaRepository" />
     internal class ReadComandaRepository: IReadComandaRepository
     {
         private readonly CarServiceModelContainer _context;
@@ -31,7 +33,7 @@ namespace CarService.Repository.Read.Comanda
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>The Coamnda.</returns>
-        public CarService.Comanda GetById(Guid id)
+        public Comanda GetById(Guid id)
         {
             return !Exists(id) ? null : _context.Comenzi.FirstOrDefault(c => c.Id == id);
         }
@@ -41,7 +43,7 @@ namespace CarService.Repository.Read.Comanda
         /// Gets all.
         /// </summary>
         /// <returns>IReadOnlyList&lt;Comenzi&gt;.</returns>
-        public IReadOnlyList<CarService.Comanda> GetAll()
+        public IReadOnlyList<Comanda> GetAll()
         {
             return _context.Comenzi.ToList();
         }

@@ -10,29 +10,51 @@
 namespace CarService
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [DataContract(IsReference = true)]
     public partial class Comanda
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Comanda()
         {
             this.Id = Guid.NewGuid();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Comanda(Guid id)
         {
             this.Id = id;
         }
+
+        [DataMember]
         public System.Guid Id { get; set; }
+
+        [DataMember]
         public StareComanda StareComanda { get; set; }
+
+        [DataMember]
         public System.DateTime DataSystem { get; set; }
+
+        [DataMember]
         public System.DateTime DataProgramare { get; set; }
+
+        [DataMember]
         public Nullable<System.DateTime> DataFinalizare { get; set; }
+
+        [DataMember]
         public Nullable<int> KmBoard { get; set; }
+
+        [DataMember]
         public string Descriere { get; set; }
+
+        [DataMember]
         public Nullable<decimal> ValoarePiese { get; set; }
-    
+
+        [DataMember]
         public virtual Client Client { get; set; }
+
+        [DataMember]
         public virtual Auto Auto { get; set; }
     }
 }

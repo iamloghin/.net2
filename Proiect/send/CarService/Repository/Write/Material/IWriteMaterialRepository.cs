@@ -1,14 +1,16 @@
-﻿using System;
-
-namespace CarService.Repository.Write.Material
+﻿namespace CarService.Repository.Write.Material
 {
+    using System;
+
+    using Material = CarService.Material;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IWriteMaterialRepository
     /// Implements the <see cref="Material" />
     /// </summary>
     /// <seealso cref="Material" />
-    internal interface IWriteMaterialRepository: IWriteRepository<CarService.Material>
+    internal interface IWriteMaterialRepository: IWriteRepository<Material>
     {
         /// <summary>
         /// Sets the cantitate.

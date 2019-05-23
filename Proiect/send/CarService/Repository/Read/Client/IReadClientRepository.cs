@@ -1,30 +1,33 @@
-﻿using System;
-
-namespace CarService.Repository.Read.Client
+﻿namespace CarService.Repository.Read.Client
 {
+    using System;
     using System.Collections.Generic;
+
+    using Auto = CarService.Auto;
+    using Client = CarService.Client;
+    using Comanda = CarService.Comanda;
 
     /// <inheritdoc />
     /// <summary>
     /// Interface IReadClientRepository
-    /// Implements the <see cref="!:CarService.Repository.Read.IReadRepository{CarService.Client}" />
+    /// Implements the <see cref="Client" />
     /// </summary>
-    /// <seealso cref="!:CarService.Repository.Read.IReadRepository{CarService.Client}" />
-    internal interface IReadClientRepository: IReadRepository<CarService.Client>
+    /// <seealso cref="Client" />
+    internal interface IReadClientRepository: IReadRepository<Client>
     {
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="email">The identifier.</param>
         /// <returns>The Client.</returns>
-        CarService.Client GetByEmail(string email);
+        Client GetByEmail(string email);
 
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="serieSaius">The identifier.</param>
         /// <returns>The Client.</returns>
-        CarService.Client GetBySerieSasiu(string serieSaius);
+        Client GetBySerieSasiu(string serieSaius);
 
 
         /// <summary>
@@ -32,7 +35,7 @@ namespace CarService.Repository.Read.Client
         /// </summary>
         /// <param name="telefon">The identifier.</param>
         /// <returns>The Client.</returns>
-        CarService.Client GetByTelefon(string telefon);
+        Client GetByTelefon(string telefon);
 
         /// <summary>
         /// Gets the nume.
@@ -87,14 +90,14 @@ namespace CarService.Repository.Read.Client
         /// Autoses the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>ICollection&lt;CarService.Auto&gt;.</returns>
-        ICollection<CarService.Auto> Autos(Guid id);
+        /// <returns>ICollection&lt;Auto&gt;.</returns>
+        ICollection<Auto> Autos(Guid id);
 
         /// <summary>
         /// Comandases the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>ICollection&lt;CarService.Comanda&gt;.</returns>
-        ICollection<CarService.Comanda> Comandas(Guid id);
+        /// <returns>ICollection&lt;Comanda&gt;.</returns>
+        ICollection<Comanda> Comandas(Guid id);
     }
 }

@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Imagine = CarService.Imagine;
+
     /// <summary>
     /// Class ReadImagineRepository.
     /// Implements the <see cref="IReadImagineRepository" />
@@ -38,11 +40,11 @@
         /// Gets all.
         /// </summary>
         /// <returns>IReadOnlyList&lt;Imagini&gt;.</returns>
-        public IReadOnlyList<CarService.Imagine> GetAll()
+        public IReadOnlyList<Imagine> GetAll()
         {
             return _context.Imagini.ToList();
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Existses the specified identifier.
@@ -53,7 +55,7 @@
         {
             return _context.Imagini.Any(i => i.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the titlu.
@@ -64,7 +66,7 @@
         {
             return !Exists(id) ? null : _context.Imagini.FirstOrDefault(i => i.Id == id)?.Titlu;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the descriere.
@@ -75,7 +77,7 @@
         {
             return !Exists(id) ? null : _context.Imagini.FirstOrDefault(i => i.Id == id)?.Descriere;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the imagine data.
@@ -86,7 +88,7 @@
         {
             return _context.Imagini.FirstOrDefault(i => i.Id == id).Data;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the foto.

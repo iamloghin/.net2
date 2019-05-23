@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CarService.Repository.Read.Auto
+﻿namespace CarService.Repository.Read.Auto
 {
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
+
+    using Auto = CarService.Auto;
+
     /// <inheritdoc />
     /// <summary>
     /// Class ReadAutoRepository.
-    /// Implements the <see cref="T:CarService.Repository.Read.Auto.IReadAutoRepository" />
+    /// Implements the <see cref="IReadAutoRepository" />
     /// </summary>
-    /// <seealso cref="T:CarService.Repository.Read.Auto.IReadAutoRepository" />
+    /// <seealso cref="IReadAutoRepository" />
     internal class ReadAutoRepository: IReadAutoRepository
     {
         private readonly CarServiceModelContainer _context;
@@ -23,23 +25,21 @@ namespace CarService.Repository.Read.Auto
             _context = context;
         }
 
-        /// <inheritdoc />
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>The Auto.</returns>
-        public CarService.Auto GetById(Guid id)
+        public Auto GetById(Guid id)
         {
             return _context.Autos.FirstOrDefault(a => a.Id == id);
         }
 
-        /// <inheritdoc />
         /// <summary>
         /// Gets all.
         /// </summary>
         /// <returns>IReadOnlyList&lt;Autos&gt;.</returns>
-        public IReadOnlyList<CarService.Auto> GetAll()
+        public IReadOnlyList<Auto> GetAll()
         {
             return _context.Autos.ToList();
         }
@@ -83,7 +83,7 @@ namespace CarService.Repository.Read.Auto
         /// </summary>
         /// <param name="id">The client identifier.</param>
         /// <returns>The auto Client</returns>
-        public IList<CarService.Auto> GetAutoByClient(Guid id)
+        public IList<Auto> GetAutoByClient(Guid id)
         {
             return _context.Autos.Where(a => a.Client.Id.Equals(id)).ToList();
         }

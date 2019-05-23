@@ -1,10 +1,11 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-
-namespace CarService.Repository.Write.Operatie
+﻿namespace CarService.Repository.Write.Operatie
 {
+    using System;
     using System.Linq;
-            
+    using System.Data.Entity.Migrations;
+
+    using Operatie = CarService.Operatie;
+
     /// <inheritdoc />
     /// <summary>
     /// Class WriteOperatieRepository.
@@ -23,17 +24,17 @@ namespace CarService.Repository.Write.Operatie
         {
             _context = context;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Creates the specified operate.
         /// </summary>
         /// <param name="operate">The operate.</param>
-        public void Create(CarService.Operatie operate)
+        public void Create(Operatie operate)
         {
             _context.Operatii.Add(operate);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Deletes the specified identifier.
@@ -45,9 +46,9 @@ namespace CarService.Repository.Write.Operatie
             _context.Operatii.Remove(operate);
         }
 
-        public void Update(CarService.Operatie operate)
+        public void Update(CarService.Operatie operatie)
         {
-            _context.Operatii.AddOrUpdate(operate);
+            _context.Operatii.AddOrUpdate(operatie);
         }
 
         /// <inheritdoc />
@@ -60,7 +61,7 @@ namespace CarService.Repository.Write.Operatie
         {
             return _context.Operatii.Any(o => o.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Saves the changes.

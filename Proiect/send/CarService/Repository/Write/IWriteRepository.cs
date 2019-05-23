@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace CarService.Repository.Write
+﻿namespace CarService.Repository.Write
 {
+    using System;
+
     /// <summary>
     /// Interface IWriteRepository
     /// </summary>

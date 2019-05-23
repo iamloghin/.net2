@@ -1,12 +1,14 @@
 ﻿namespace CarService.Repository.Write.Mecanic
 {
+    using Mecanic = CarService.Mecanic;
+
     /// <inheritdoc />
     /// <summary>
     /// Interface IWriteMecanicRepository
-    /// Implements the <see cref="!:Write.IWriteRepository{CarService.Mecanic}" />
+    /// Implements the <see cref="Mecanic" />
     /// </summary>
-    /// <seealso cref="!:Write.IWriteRepository{CarService.Mecanic}" />
-    internal interface IWriteMecanicRepository: IWriteRepository<CarService.Mecanic>
+    /// <seealso cref="Mecanic" />
+    internal interface IWriteMecanicRepository: IWriteRepository<Mecanic>
     {
     }
 }

@@ -2,7 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
+
+    using CarService.Common.Logger;
+    using CarService.Common.Logger.Enum;
+
     using Common.Exceptions;
     using CarService.Repository.Read.Auto;
     using CarService.Repository.Read.Client;
@@ -29,37 +34,47 @@
     /// <seealso cref="T:CarService.Service.IAutoService" />
     public class AutoService: IAutoService
     {
-        private static CarServiceModelContainer _context;
+        private static CarServiceModelContainer context;
 
-        private ReadAutoRepository _autoRead;
-        private ReadClientRepository _clientRead;
-        private ReadComandaRepository _comandaRead;
-        private ReadDetaliuComandaRepository _detaliuComandaRead;
-        private ReadImagineRepository _imagineRead;
-        private ReadMaterialRepository _materialRead;
-        private ReadMecanicRepository _mecanicRead;
-        private ReadOperatieRepository _operatieRead;
+        private IReadAutoRepository _autoRead;
+        private IReadClientRepository _clientRead;
+        private IReadComandaRepository _comandaRead;
+        private IReadDetaliuComandaRepository _detaliuComandaRead;
+        private IReadMaterialRepository _materialRead;
+        private IReadMecanicRepository _mecanicRead;
+        private IReadOperatieRepository _operatieRead;
 
-        private WriteAutoRepository _autoWrite;
-        private WriteClientRepository _clientWrite;
-        private WriteComandaRepository _comandaWrite;
-        private WriteDetaliuComandaRepository _detaliuComandaWrite;
-        private WriteImagineRepository _imagineWrite;
-        private WriteMaterialRepository _materialWrite;
-        private WriteMecanicRepository _mecanicWrite;
-        private WriteOperatieRepository _operatieWrite;
+        private IWriteAutoRepository _autoWrite;
+        private IWriteClientRepository _clientWrite;
+        private IWriteComandaRepository _comandaWrite;
+        private IWriteDetaliuComandaRepository _detaliuComandaWrite;
+        private IWriteImagineRepository _imagineWrite;
+        private IWriteMaterialRepository _materialWrite;
+        private IWriteMecanicRepository _mecanicWrite;
+        private IWriteOperatieRepository _operatieWrite;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutoService"/> class.
         /// </summary>
-        public AutoService() => _context = new CarServiceModelContainer();
+        public AutoService() => context = new CarServiceModelContainer();
 
         public void DeleteAllEntitiesOnTable(string tableName)
         {
-            var count = _context.Database.SqlQuery<int>("SELECT COUNT(OBJECT_ID(@p0, 'U'))", tableName);
+            string databaseName = context.Database.Connection.Database;
+            var count = context.Database.SqlQuery<int>($"SELECT COUNT(*) FROM [{databaseName}].[dbo].[{tableName}]");
             if (count.Any() && count.First() > 0)
             {
-                _context.Database.ExecuteSqlCommand($"DELETE FROM {tableName}");
+                try
+                {
+                    var setResponse = $"Deleted {count.First()} items from {tableName}";
+                    context.Database.ExecuteSqlCommand($"DELETE FROM {tableName}");
+                    Logger.Log.Handle(LogLevel.Info, setResponse);
+                }
+                catch (Exception e)
+                {
+                    var message = DbEntityCustomException.BuildMessageExceptions(e);
+                    throw new DbEntityCustomException(message);
+                }
             }
         }
 
@@ -74,10 +89,10 @@
         {
             try
             {
-                _clientWrite = new WriteClientRepository(_context);
+                _clientWrite = new WriteClientRepository(context);
 
                 _clientWrite.Create(client);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -98,10 +113,10 @@
         {
             try
             {
-                _autoWrite = new WriteAutoRepository(_context);
+                _autoWrite = new WriteAutoRepository(context);
 
                 _autoWrite.Create(auto);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -122,10 +137,10 @@
         {
             try
             {
-                _materialWrite = new WriteMaterialRepository(_context);
+                _materialWrite = new WriteMaterialRepository(context);
 
                 _materialWrite.Create(material);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -146,10 +161,10 @@
         {
             try
             {
-                _detaliuComandaWrite = new WriteDetaliuComandaRepository(_context);
+                _detaliuComandaWrite = new WriteDetaliuComandaRepository(context);
 
                 _detaliuComandaWrite.Create(detaliuComanda);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -170,10 +185,10 @@
         {
             try
             {
-                _imagineWrite = new WriteImagineRepository(_context);
+                _imagineWrite = new WriteImagineRepository(context);
 
                 _imagineWrite.Create(imagine);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -194,10 +209,10 @@
         {
             try
             {
-                _operatieWrite = new WriteOperatieRepository(_context);
+                _operatieWrite = new WriteOperatieRepository(context);
 
                 _operatieWrite.Create(operatie);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -218,10 +233,10 @@
         {
             try
             {
-                _mecanicWrite = new WriteMecanicRepository(_context);
+                _mecanicWrite = new WriteMecanicRepository(context);
 
                 _mecanicWrite.Create(mecanic);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -242,10 +257,10 @@
         {
             try
             {
-                _comandaWrite = new WriteComandaRepository(_context);
+                _comandaWrite = new WriteComandaRepository(context);
 
                 _comandaWrite.Create(comanda);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -267,14 +282,18 @@
         {
             try
             {
-                _operatieWrite = new WriteOperatieRepository(_context);
-                _detaliuComandaWrite = new WriteDetaliuComandaRepository(_context);
+                _operatieWrite = new WriteOperatieRepository(context);
+                _detaliuComandaWrite = new WriteDetaliuComandaRepository(context);
 
                 _operatieWrite.Create(operatie);
+                if (detaliuComanda.Operaties == null)
+                {
+                    detaliuComanda.Operaties = new List<Operatie>();
+                }
                 detaliuComanda.Operaties.Add(operatie);
                 _detaliuComandaWrite.Update(detaliuComanda);
 
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -296,14 +315,14 @@
         {
             try
             {
-                _detaliuComandaWrite = new WriteDetaliuComandaRepository(_context);
+                _detaliuComandaWrite = new WriteDetaliuComandaRepository(context);
                 foreach (var selectedMecanic in selectedMecanics)
                 {
                     detaliuComanda.Mecanici.Add(selectedMecanic);
                 }
                 _detaliuComandaWrite.Update(detaliuComanda);
 
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -324,10 +343,10 @@
         {
             try
             {
-                _clientWrite = new WriteClientRepository(_context);
+                _clientWrite = new WriteClientRepository(context);
 
                 _clientWrite.Update(client);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -348,10 +367,10 @@
         {
             try
             {
-                _detaliuComandaWrite = new WriteDetaliuComandaRepository(_context);
+                _detaliuComandaWrite = new WriteDetaliuComandaRepository(context);
 
                 _detaliuComandaWrite.Update(detaliuComanda);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -365,10 +384,10 @@
         {
             try
             {
-                _materialWrite = new WriteMaterialRepository(_context);
+                _materialWrite = new WriteMaterialRepository(context);
 
                 _materialWrite.Update(material);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -382,10 +401,10 @@
         {
             try
             {
-                _mecanicWrite = new WriteMecanicRepository(_context);
+                _mecanicWrite = new WriteMecanicRepository(context);
 
                 _mecanicWrite.Delete(mecanic.Id);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -399,10 +418,10 @@
         {
             try
             {
-                _operatieWrite = new WriteOperatieRepository(_context);
+                _operatieWrite = new WriteOperatieRepository(context);
 
                 _operatieWrite.Delete(operatie.Id);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -416,10 +435,10 @@
         {
             try
             {
-                _materialWrite = new WriteMaterialRepository(_context);
+                _materialWrite = new WriteMaterialRepository(context);
 
                 _materialWrite.Delete(material.Id);
-                _context.SaveChanges();
+                context.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -440,7 +459,7 @@
         {
             try
             {
-                _clientRead = new ReadClientRepository(_context);
+                _clientRead = new ReadClientRepository(context);
 
                 if (searchClientString.Contains("@"))
                 {
@@ -472,7 +491,7 @@
         {
             try
             {
-                _autoRead = new ReadAutoRepository(_context);
+                _autoRead = new ReadAutoRepository(context);
                 return _autoRead.GetAutoByClient(id);
             }
             catch (Exception e)
@@ -486,7 +505,7 @@
         {
             try
             {
-                _materialRead = new ReadMaterialRepository(_context);
+                _materialRead = new ReadMaterialRepository(context);
                 return _materialRead.GetAll().ToList();
             }
             catch (Exception e)
@@ -506,7 +525,7 @@
         {
             try
             {
-                _mecanicRead = new ReadMecanicRepository(_context);
+                _mecanicRead = new ReadMecanicRepository(context);
                 return _mecanicRead.GetAvailables();
             }
             catch (Exception e)
@@ -520,7 +539,7 @@
         {
             try
             {
-                _materialRead = new ReadMaterialRepository(_context);
+                _materialRead = new ReadMaterialRepository(context);
                 return _materialRead.GetAvailables();
             }
             catch (Exception e)
@@ -540,7 +559,7 @@
         {
             try
             {
-                _mecanicRead = new ReadMecanicRepository(_context);
+                _mecanicRead = new ReadMecanicRepository(context);
                 return _mecanicRead.GetAll().ToList();
             }
             catch (Exception e)
@@ -550,12 +569,75 @@
             }
         }
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Gets all detaliu comenzii.
+        /// </summary>
+        /// <returns>IList&lt;DetaliuComanda&gt;.</returns>
+        /// <exception cref="DbEntityCustomException"></exception>
         public IList<DetaliuComanda> GetAllDetaliuComandas()
         {
             try
             {
-                _detaliuComandaRead = new ReadDetaliuComandaRepository(_context);
+                _detaliuComandaRead = new ReadDetaliuComandaRepository(context);
                 return _detaliuComandaRead.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                var message = DbEntityCustomException.BuildMessageExceptions(e);
+                throw new DbEntityCustomException(message);
+            }
+        }
+
+        public IList<Comanda> GetAllOrders()
+        {
+            try
+            {
+                _comandaRead = new ReadComandaRepository(context);
+                return _comandaRead.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                var message = DbEntityCustomException.BuildMessageExceptions(e);
+                throw new DbEntityCustomException(message);
+            }
+        }
+
+        public IList<Comanda> GetAllDoneOrders()
+        {
+            try
+            {
+                _comandaRead = new ReadComandaRepository(context);
+                return _comandaRead.GetAll().Where(comanda => comanda.StareComanda == StareComanda.Executata).ToList();
+            }
+            catch (Exception e)
+            {
+                var message = DbEntityCustomException.BuildMessageExceptions(e);
+                throw new DbEntityCustomException(message);
+            }
+        }
+
+        public IList<Operatie> GetAllOperations()
+        {
+            try
+            {
+                _operatieRead = new ReadOperatieRepository(context);
+                return _operatieRead.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                var message = DbEntityCustomException.BuildMessageExceptions(e);
+                throw new DbEntityCustomException(message);
+            }
+        }
+
+        public int GetOperationsTotalTime()
+        {
+            try
+            {
+                _operatieRead = new ReadOperatieRepository(context);
+                var response = _operatieRead.GetAll().Where(operatie => operatie.TimpExecutie.HasValue).ToList();
+                return Decimal.ToInt32((decimal)response.Sum(operatie => operatie.TimpExecutie));
             }
             catch (Exception e)
             {

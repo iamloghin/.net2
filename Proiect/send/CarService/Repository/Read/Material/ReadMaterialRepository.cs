@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Material = CarService.Material;
+
     /// <summary>
     /// Class ReadMaterialRepository.
     /// Implements the <see cref="IReadMaterialRepository" />
@@ -32,17 +34,17 @@
         {
             return !Exists(id) ? null : _context.Materiale.FirstOrDefault(m => m.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets all.
         /// </summary>
         /// <returns>IReadOnlyList&lt;Materiale&gt;.</returns>
-        public IReadOnlyList<CarService.Material> GetAll()
+        public IReadOnlyList<Material> GetAll()
         {
             return _context.Materiale.ToList();
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Existses the specified identifier.
@@ -53,7 +55,7 @@
         {
             return _context.Materiale.Any(m => m.Id == id);
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the denumire.
@@ -64,7 +66,7 @@
         {
             return !Exists(id) ? null : _context.Materiale.FirstOrDefault(m => m.Id == id)?.Denumire;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the cantitate.
@@ -75,7 +77,7 @@
         {
             return _context.Materiale.FirstOrDefault(m => m.Id == id).Cantitate;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the pret.
@@ -86,7 +88,7 @@
         {
             return _context.Materiale.FirstOrDefault(m => m.Id == id).Pret;
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Gets the data aprovizionare.
@@ -98,10 +100,10 @@
             return _context.Materiale.FirstOrDefault(m => m.Id == id).DataAprovizionare;
         }
 
-        public IList<CarService.Material> GetAvailables()
+        public IList<Material> GetAvailables()
         {
             var allMaterials = _context.Materiale.ToList();
-            var availableMaterials = new List<CarService.Material>();
+            var availableMaterials = new List<Material>();
 
             foreach (var material in allMaterials)
             {

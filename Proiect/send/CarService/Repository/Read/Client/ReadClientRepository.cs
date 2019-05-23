@@ -1,16 +1,19 @@
-﻿using System;
-
-namespace CarService.Repository.Read.Client
+﻿namespace CarService.Repository.Read.Client
 {
-    using System.Collections.Generic;
+    using System;
     using System.Linq;
+    using System.Collections.Generic;
+
+    using Auto = CarService.Auto;
+    using Client = CarService.Client;
+    using Comanda = CarService.Comanda;
 
     /// <inheritdoc />
     /// <summary>
     /// Class ReadClientRepository.
-    /// Implements the <see cref="T:CarService.Repository.Read.Client.IReadClientRepository" />
+    /// Implements the <see cref="IReadClientRepository" />
     /// </summary>
-    /// <seealso cref="T:CarService.Repository.Read.Client.IReadClientRepository" />
+    /// <seealso cref="IReadClientRepository" />
     internal class ReadClientRepository: IReadClientRepository
     {
         private readonly CarServiceModelContainer _context;
@@ -24,13 +27,12 @@ namespace CarService.Repository.Read.Client
             _context = context;
         }
 
-        /// <inheritdoc />
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>The Client.</returns>
-        public CarService.Client GetById(Guid id)
+        public Client GetById(Guid id)
         {
             return !Exists(id) ? null : _context.Clienti.FirstOrDefault(c => c.Id == id);
         }
@@ -40,7 +42,7 @@ namespace CarService.Repository.Read.Client
         /// Gets all.
         /// </summary>
         /// <returns>IReadOnlyList&lt;The Clients&gt;.</returns>
-        public IReadOnlyList<CarService.Client> GetAll()
+        public IReadOnlyList<Client> GetAll()
         {
             return _context.Clienti.ToList();
         }
@@ -62,7 +64,7 @@ namespace CarService.Repository.Read.Client
         /// </summary>
         /// <param name="email">The identifier.</param>
         /// <returns>The Client.</returns>
-        public CarService.Client GetByEmail(string email)
+        public Client GetByEmail(string email)
         {
             return _context.Clienti.Any(a => a.Email.Equals(email)) ? _context.Clienti.FirstOrDefault(c => c.Email.Equals(email)) : null;
         }
@@ -73,10 +75,10 @@ namespace CarService.Repository.Read.Client
         /// </summary>
         /// <param name="serieSaius">The identifier.</param>
         /// <returns>The Client.</returns>
-        public CarService.Client GetBySerieSasiu(string serieSaius)
+        public Client GetBySerieSasiu(string serieSaius)
         {
             if (!_context.Autos.Any(a => a.SerieSasiu.Equals(serieSaius))) return null;
-            
+
             var auto = _context.Autos.FirstOrDefault(a => a.SerieSasiu.Equals(serieSaius));
             return _context.Clienti.FirstOrDefault(c => c.Id.Equals(auto.Client.Id));
         }
@@ -87,7 +89,7 @@ namespace CarService.Repository.Read.Client
         /// </summary>
         /// <param name="telefon">The identifier.</param>
         /// <returns>The Client.</returns>
-        public CarService.Client GetByTelefon(string telefon)
+        public Client GetByTelefon(string telefon)
         {
             return _context.Clienti.Any(a => a.Telefon.Equals(telefon)) ? _context.Clienti.FirstOrDefault(c => c.Telefon.Equals(telefon)) : null;
         }
@@ -174,8 +176,8 @@ namespace CarService.Repository.Read.Client
         /// Autoses the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>ICollection&lt;CarService.Auto&gt;.</returns>
-        public ICollection<CarService.Auto> Autos(Guid id)
+        /// <returns>ICollection&lt;Auto&gt;.</returns>
+        public ICollection<Auto> Autos(Guid id)
         {
             return !Exists(id) ? null : _context.Autos.Where(a => a.Client.Id == id).ToList();
         }
@@ -185,8 +187,8 @@ namespace CarService.Repository.Read.Client
         /// Comandases the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>ICollection&lt;CarService.Comanda&gt;.</returns>
-        public ICollection<CarService.Comanda> Comandas(Guid id)
+        /// <returns>ICollection&lt;Comanda&gt;.</returns>
+        public ICollection<Comanda> Comandas(Guid id)
         {
             return !Exists(id) ? null : _context.Comenzi.Where(c => c.Client.Id == id).ToList();
         }
