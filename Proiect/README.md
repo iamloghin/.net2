@@ -18,3 +18,4 @@ https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/blob/master/
 http://windowsapptutorials.com/wpf/zoom-image-wpf-app/
 http://paulstovell.com/blog/wpf-navigation
 http://www.jarloo.com/how-to-create-a-checkedlistbox-in-wpf/
+http://www.abhisheksur.com/2011/03/deal-with-cpu-usage-in-wpf-applications.html
