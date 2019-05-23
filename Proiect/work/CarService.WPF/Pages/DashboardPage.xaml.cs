@@ -42,7 +42,6 @@ namespace CarService.WPF.Pages
                         $"Total executing time is {_autoApi.GetOperationsTotalTime().ToString()}";
                 }
             }
-            CommonItem.GetTextBox().Text = "DASHBOARD";
         }
     }
 }

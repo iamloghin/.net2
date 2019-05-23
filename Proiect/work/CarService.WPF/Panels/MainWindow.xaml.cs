@@ -26,6 +26,8 @@
                 using (var _autoApi = new AutoServiceClient())
                 {
                     var checkConnection = _autoApi.GetAvailabelMecanics().Count;
+                    CommonItem.SetFrame(ref _mainPanelFrame);
+                    CommonItem.SetTextBox(ref _pageName);
                 }
             }
             catch (Exception e)
@@ -49,6 +51,7 @@
         {
             CommonItem.PageInstent.Clear();
             _mainPanelFrame.NavigationService.Navigate(new Dashboard());
+            CommonItem.GetTextBox().Text = "DASHBOARD";
         }
 
         private void NewClientButton_OnClick(object sender, RoutedEventArgs e)

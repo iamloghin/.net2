@@ -106,7 +106,6 @@
                 };
 
                 var response = _autoService.CreateDetaliuComanda(newDetaliuComanda);
-
                 Assert.IsTrue(response);
             }
             catch (Exception e)
